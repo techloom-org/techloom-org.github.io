@@ -11,13 +11,13 @@ const HomeFooter = () => {
   return (
     <Box
       sx={{
-        py: 12,
+        py: { xs: 6, sm: 8, md: 10, lg: 12 },
         bgcolor: theme.palette.mode === 'dark' ? '#2a2a2a' : '#1a1a1a',
         color: theme.palette.mode === 'dark' ? '#ffffff' : '#ffffff',
-        px: 2,
+        px: { xs: 2, sm: 2 },
         borderRadius: 3,
-        mx: 2,
-        mb: 4,
+        mx: { xs: 2, sm: 2 },
+        mb: { xs: 2, sm: 4 },
       }}
     >
       <Box sx={{ textAlign: 'center' }}>
@@ -25,9 +25,10 @@ const HomeFooter = () => {
           variant="h2"
           component="h2"
           sx={{
-            fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' },
+            fontSize: { xs: '1.8rem', sm: '2.5rem', md: '3rem' },
             fontWeight: 800,
-            mb: 3
+            mb: { xs: 2, sm: 3 },
+            lineHeight: 1.2
           }}
         >
           Ready to Transform Your Ideas?
@@ -35,18 +36,20 @@ const HomeFooter = () => {
         <Typography
           variant="h6"
           sx={{
-            mb: 6,
-            fontSize: '1.2rem',
-            opacity: 0.8,
+            mb: { xs: 4, sm: 5, md: 6 },
+            fontSize: { xs: '1.1rem', sm: '1.2rem' },
+            opacity: 0.9,
             maxWidth: '600px',
-            mx: 'auto'
+            mx: 'auto',
+            lineHeight: 1.5,
+            px: { xs: 1, sm: 0 }
           }}
         >
           Let's discuss how we can help you achieve your technology goals and drive your business forward.
         </Typography>
         <Stack 
           direction={{ xs: 'column', sm: 'row' }} 
-          spacing={3} 
+          spacing={{ xs: 2, sm: 3 }}
           sx={{ justifyContent: 'center' }}
         >
           <Button 
@@ -55,6 +58,12 @@ const HomeFooter = () => {
             size="large"
             onClick={() => navigate('/contact')}
             endIcon={<ArrowForward />}
+            sx={{
+              py: { xs: 1.8, sm: 1.5 },
+              fontSize: { xs: '1.05rem', sm: '1rem' },
+              fontWeight: 600,
+              width: { xs: '100%', sm: 'auto' }
+            }}
           >
             Start Your Project
           </Button>
@@ -63,6 +72,18 @@ const HomeFooter = () => {
             color="primary"
             size="large"
             onClick={() => navigate('/services')}
+            sx={{
+              py: { xs: 1.8, sm: 1.5 },
+              fontSize: { xs: '1.05rem', sm: '1rem' },
+              fontWeight: 600,
+              width: { xs: '100%', sm: 'auto' },
+              borderColor: 'rgba(255,255,255,0.3)',
+              color: 'white',
+              '&:hover': {
+                borderColor: 'primary.main',
+                backgroundColor: 'rgba(255,255,255,0.1)'
+              }
+            }}
           >
             View Services
           </Button>

@@ -20,22 +20,23 @@ const Hero = () => {
   return (
     <Box
       sx={{
-        minHeight: '100vh',
+        minHeight: { xs: '75vh', sm: '80vh', md: '90vh', lg: '100vh' },
         display: 'flex',
         alignItems: 'center',
         position: 'relative',
       }}
     >
-      <Box sx={{ py: 12, px: 2, width: '100%' }}>
-        <Grid container spacing={6} alignItems="center">
+      <Box sx={{ py: { xs: 2, sm: 4, md: 6, lg: 8 }, px: { xs: 2, sm: 2 }, width: '100%' }}>
+        <Grid container spacing={{ xs: 2, sm: 4, md: 6 }} alignItems="center">
           <Grid size={{ xs: 12, lg: 6 }}>
             <Box sx={{ textAlign: { xs: 'center', lg: 'left' } }}>
               <Chip
                 label="🚀 New Technology Startup"
                 sx={{
-                  mb: 3,
-                  px: 2,
-                  py: 1
+                  mb: { xs: 1.5, sm: 2, md: 3 },
+                  px: { xs: 2, sm: 2 },
+                  py: { xs: 0.8, sm: 1 },
+                  fontSize: { xs: '0.9rem', sm: '0.875rem' }
                 }}
               />
               
@@ -43,11 +44,11 @@ const Hero = () => {
                 variant="h1" 
                 component="h1" 
                 sx={{
-                  fontSize: { xs: '2.5rem', sm: '3.5rem', md: '4rem', lg: '4.5rem' },
+                  fontSize: { xs: '3rem', sm: '3rem', md: '3.5rem', lg: '4.5rem' },
                   fontWeight: 800,
-                  lineHeight: 1.1,
-                  mb: 3,
-                  color: 'text.primary'
+                  lineHeight: { xs: 1.1, sm: 1.1 },
+                  mb: { xs: 1.5, sm: 2, md: 3 },
+                  color: 'text.primary',
                 }}
               >
                 Engineering Quality{' '}
@@ -62,13 +63,14 @@ const Hero = () => {
                 variant="h5" 
                 component="p" 
                 sx={{ 
-                  mb: 6,
-                  fontSize: { xs: '1.1rem', sm: '1.3rem', md: '1.4rem' },
+                  mb: { xs: 3, sm: 4, md: 5, lg: 6 },
+                  fontSize: { xs: '1.1rem', sm: '1.2rem', md: '1.3rem', lg: '1.4rem' },
                   color: 'text.secondary',
-                  lineHeight: 1.6,
+                  lineHeight: 1.5,
                   fontWeight: 400,
-                  maxWidth: '600px',
-                  mx: { xs: 'auto', lg: 0 }
+                  maxWidth: { xs: '100%', sm: '600px' },
+                  mx: { xs: 'auto', lg: 0 },
+                  px: { xs: 0, sm: 0 }
                 }}
               >
                 Powered by a team of world-class experts from multinational companies. 
@@ -78,18 +80,20 @@ const Hero = () => {
               
               <Stack 
                 direction={{ xs: 'column', sm: 'row' }} 
-                spacing={3} 
+                spacing={{ xs: 1.5, sm: 3 }}
                 sx={{ 
                   justifyContent: { xs: 'center', lg: 'flex-start' },
                   width: '100%',
                   overflow: 'visible',
                   position: 'relative',
-                  zIndex: 10
+                  zIndex: 10,
+                  px: { xs: 0, sm: 0 }
                 }}
               >
                 <Button 
                   variant="contained" 
                   color="primary" 
+                  size="large"
                   onClick={() => {
                     console.log('Explore Services button clicked');
                     navigate('/services');

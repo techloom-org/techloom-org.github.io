@@ -10,7 +10,7 @@ const FeatureCard = ({ feature, index }) => {
       elevation={0}
       sx={{
         height: '100%',
-        p: 3,
+        p: { xs: 2.5, sm: 3 },
         borderRadius: 3,
         bgcolor: 'background.paper',
         transition: 'all 0.3s ease-in-out',
@@ -30,9 +30,9 @@ const FeatureCard = ({ feature, index }) => {
           sx={{
             bgcolor: `${feature.color}15`,
             color: feature.color,
-            width: 80,
-            height: 80,
-            mb: 3,
+            width: { xs: 70, sm: 80 },
+            height: { xs: 70, sm: 80 },
+            mb: { xs: 2, sm: 3 },
             mx: 'auto'
           }}
         >
@@ -44,9 +44,9 @@ const FeatureCard = ({ feature, index }) => {
           sx={{
             fontWeight: 700,
             color: 'text.primary',
-            mb: 2,
+            mb: { xs: 1.5, sm: 2 },
             textAlign: 'center',
-            fontSize: '1.4rem'
+            fontSize: { xs: '1.2rem', sm: '1.4rem' }
           }}
         >
           {feature.title}
@@ -55,9 +55,9 @@ const FeatureCard = ({ feature, index }) => {
           variant="body1"
           sx={{
             color: 'text.secondary',
-            lineHeight: 1.7,
+            lineHeight: 1.6,
             textAlign: 'center',
-            fontSize: '1rem'
+            fontSize: { xs: '1rem', sm: '1rem' }
           }}
         >
           {feature.description}

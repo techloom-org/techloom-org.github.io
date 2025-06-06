@@ -54,8 +54,8 @@ const WhyChooseTechloom = () => {
   ];
 
   return (
-    <Box sx={{ py: 12, px: 2 }}>
-      <Box sx={{ textAlign: 'center', mb: 8 }}>
+    <Box sx={{ py: { xs: 2, sm: 4, md: 6, lg: 8 }, px: { xs: 2, sm: 2 } }}>
+      <Box sx={{ textAlign: 'center', mb: { xs: 4, sm: 6, md: 8 } }}>
         <Typography
           variant="h2"
           component="h2"
@@ -63,7 +63,7 @@ const WhyChooseTechloom = () => {
             fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' },
             fontWeight: 800,
             color: 'text.primary',
-            mb: 3
+            mb: { xs: 2, sm: 3 }
           }}
         >
           Why Choose Techloom?
@@ -74,15 +74,17 @@ const WhyChooseTechloom = () => {
             color: 'text.secondary',
             maxWidth: '600px',
             mx: 'auto',
-            fontSize: '1.2rem',
-            fontWeight: 400
+            fontSize: { xs: '1.1rem', sm: '1.2rem' },
+            fontWeight: 400,
+            lineHeight: 1.5,
+            px: { xs: 1, sm: 0 }
           }}
         >
           We stand out because we are experts in software development, delivering world-class solutions with precision and innovation
         </Typography>
       </Box>
       
-      <Grid container spacing={4}>
+      <Grid container spacing={{ xs: 2, sm: 3, md: 4 }}>
         {features.map((feature, index) => (
           <Grid key={index} size={{ xs: 12, sm: 6, lg: 4 }}>
             <FeatureCard feature={feature} index={index} />

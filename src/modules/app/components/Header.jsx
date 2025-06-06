@@ -29,9 +29,16 @@ const Header = () => {
       sx={{
         bgcolor: theme.palette.custom.headerBg,
         backdropFilter: 'blur(10px)',
+        minHeight: '80px',
       }}
     >
-      <Toolbar>
+      <Toolbar
+        sx={{
+          minHeight: '80px !important',
+          px: { xs: 2, sm: 3, md: 4 },
+          py: 1.5,
+        }}
+      >
         <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center' }}>
           <Box
             onClick={() => navigate('/')}
@@ -42,11 +49,11 @@ const Header = () => {
               '&:hover': { opacity: 0.8 }
             }}
           >
-            <Logo height={30} />
+            <Logo height={40} />
           </Box>
         </Box>
         
-        <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 1 }}>
+        <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 2 }}>
           {navigationItems.map((item) => (
             <Button
               key={item.path}
@@ -59,8 +66,10 @@ const Header = () => {
                   bgcolor: 'action.hover',
                 },
                 borderRadius: 2,
-                px: 2,
-                py: 1
+                px: 3,
+                py: 1.5,
+                minHeight: '44px',
+                fontSize: '0.95rem',
               }}
             >
               {item.label}
@@ -71,8 +80,10 @@ const Header = () => {
         <IconButton 
           onClick={toggleColorMode} 
           sx={{ 
-            ml: 2,
+            ml: 3,
             color: 'text.primary',
+            minWidth: '48px',
+            minHeight: '48px',
             '&:hover': {
               bgcolor: 'action.hover',
             }

@@ -16,7 +16,13 @@ const Home = () => {
   });
 
   return (
-    <Box sx={{ flexGrow: 1, overflow: 'hidden' }}>
+    <Box sx={{ 
+      flexGrow: 1, 
+      overflow: 'hidden',
+      '& > *:not(:last-child)': {
+        mb: { xs: 0, sm: 2 }
+      }
+    }}>
       <Hero />
       <WhyChooseTechloom />
       <HomeFooter />
