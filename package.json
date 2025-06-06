@@ -4,6 +4,7 @@
   "type": "module",
   "description": "",
   "main": "index.jsx",
+  "homepage": "https://techloom-org.github.io",
   "scripts": {
     "dev": "rsbuild dev",
     "build": "rsbuild build",

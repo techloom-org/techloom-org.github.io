@@ -19,6 +19,9 @@ export default defineConfig({
   html: {
     title: 'Techloom',
   },
+  output: {
+    assetPrefix: '/',
+  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src'),
