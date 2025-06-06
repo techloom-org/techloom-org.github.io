@@ -2,10 +2,10 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Box, Container } from '@mui/material';
 import Header from '@modules/app/components/Header';
-import HomePage from '@modules/app/pages/HomePage';
-import AboutPage from '@modules/app/pages/AboutPage';
-import ServicesPage from '@modules/app/pages/ServicesPage';
-import ContactPage from '@modules/app/pages/ContactPage';
+import Home from '@/modules/app/pages/Home';
+import About from '@modules/app/pages/About';
+import Services from '@modules/app/pages/Services';
+import Contact from '@modules/app/pages/Contact';
 
 function App() {
   return (
@@ -14,10 +14,10 @@ function App() {
         <Header />
         <Container maxWidth="lg" sx={{ px: 0 }}>
           <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/services" element={<ServicesPage />} />
-            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/contact" element={<Contact />} />
           </Routes>
         </Container>
       </Box>

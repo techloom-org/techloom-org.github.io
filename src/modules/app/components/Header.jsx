@@ -5,7 +5,7 @@ import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useTheme } from '@mui/material/styles';
 import { useThemeMode } from '@modules/app/hooks/useThemeMode.js';
-import techloomLogo from '@assets/images/logo.png';
+import Logo from './Logo';
 
 const Header = () => {
   const { toggleColorMode, isDark } = useThemeMode();
@@ -42,15 +42,7 @@ const Header = () => {
               '&:hover': { opacity: 0.8 }
             }}
           >
-            <img 
-              src={techloomLogo}
-              alt="Techloom Logo" 
-              style={{ 
-                height: 30, 
-                width: 'auto',
-                marginRight: 16 
-              }}
-            />
+            <Logo height={30} />
           </Box>
         </Box>
         

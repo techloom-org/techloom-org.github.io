@@ -7,7 +7,7 @@ const getTheme = (mode) => createTheme({
       main: '#fecf1d', // Techloom yellow
       light: '#ffd966',
       dark: '#e6b800',
-      contrastText: mode === 'dark' ? '#1a1a1a' : '#424242',
+      contrastText: '#1a1a1a',
     },
     secondary: {
       main: mode === 'dark' ? '#ffffff' : '#424242', // Text colors
@@ -16,7 +16,7 @@ const getTheme = (mode) => createTheme({
       contrastText: mode === 'dark' ? '#1a1a1a' : '#ffffff',
     },
     background: {
-      default: mode === 'dark' ? '#1a1a1a' : '#fecf1d',
+      default: mode === 'dark' ? '#1a1a1a' : '#fefefe',
       paper: mode === 'dark' ? '#2a2a2a' : '#ffffff',
       contrast: mode === 'dark' ? '#0a0a0a' : '#f8fafc',
     },
@@ -32,15 +32,15 @@ const getTheme = (mode) => createTheme({
     },
     // Custom colors for features
     custom: {
-      feature1: '#ff6b35',
-      feature2: '#4ecdc4', 
-      feature3: '#45b7d1',
-      feature4: '#96ceb4',
-      feature5: '#feca57',
-      feature6: '#ff9ff3',
-      gradientStart: mode === 'dark' ? 'rgba(254, 207, 29, 0.1)' : 'rgba(254, 207, 29, 0.05)',
-      gradientEnd: mode === 'dark' ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.02)',
-      headerBg: mode === 'dark' ? 'rgba(18, 18, 18, 0.95)' : 'rgba(254, 207, 29, 0.95)',
+      feature1: '#fecf1d', // Primary yellow
+      feature2: '#e6b800', // Darker yellow
+      feature3: '#ffd966', // Lighter yellow
+      feature4: '#f4d03f', // Golden yellow
+      feature5: '#f39c12', // Orange yellow
+      feature6: '#d4ac0d', // Deep golden
+      gradientStart: mode === 'dark' ? 'rgba(254, 207, 29, 0.1)' : 'rgba(248, 250, 252, 0.8)',
+      gradientEnd: mode === 'dark' ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.9)',
+      headerBg: mode === 'dark' ? 'rgba(18, 18, 18, 0.95)' : 'rgba(255, 255, 255, 0.95)',
     }
   },
   typography: {
@@ -62,11 +62,96 @@ const getTheme = (mode) => createTheme({
   components: {
     MuiButton: {
       styleOverrides: {
-        root: {
+        root: ({ theme, ownerState }) => ({
           textTransform: 'none',
-          borderRadius: 8,
-          padding: '12px 24px',
-        },
+          fontWeight: 600,
+          borderRadius: 12,
+          padding: '14px 32px',
+          fontSize: '1.1rem',
+          position: 'relative',
+          overflow: 'hidden',
+          transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+          zIndex: 1,
+          // Shimmer effect
+          '&::before': {
+            content: '""',
+            position: 'absolute',
+            top: 0,
+            left: '-100%',
+            width: '100%',
+            height: '100%',
+            background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)',
+            transition: 'left 0.5s ease',
+            zIndex: -1,
+          },
+          '&:hover::before': {
+            left: '100%',
+          },
+          // Icon animation
+          '& .MuiSvgIcon-root': {
+            transition: 'transform 0.3s ease',
+          },
+          '&:hover .MuiSvgIcon-root': {
+            transform: 'translateX(4px)',
+          },
+          // Size variants
+          ...(ownerState.size === 'large' && {
+            padding: '16px 40px',
+            fontSize: '1.2rem',
+          }),
+          ...(ownerState.size === 'small' && {
+            padding: '10px 24px',
+            fontSize: '0.9rem',
+          }),
+        }),
+        // Primary contained button
+        containedPrimary: ({ theme }) => ({
+          background: `linear-gradient(135deg, ${theme.palette.primary.main} 0%, ${theme.palette.primary.dark} 100%)`,
+          color: theme.palette.primary.contrastText,
+          fontWeight: 700,
+          boxShadow: `0 4px 20px rgba(254, 207, 29, 0.3)`,
+          '&:hover': {
+            transform: 'translateY(-2px) scale(1.02)',
+            boxShadow: `0 12px 40px rgba(254, 207, 29, 0.4)`,
+            background: `linear-gradient(135deg, ${theme.palette.primary.dark} 0%, ${theme.palette.primary.main} 100%)`,
+          },
+          '&:active': {
+            transform: 'translateY(-1px) scale(1.01)',
+          },
+        }),
+        // Primary outlined button
+        outlinedPrimary: ({ theme }) => ({
+          borderWidth: 2,
+          borderColor: theme.palette.primary.main,
+          color: theme.palette.primary.main,
+          background: 'transparent',
+          fontWeight: 600,
+          '&:hover': {
+            borderWidth: 2,
+            borderColor: theme.palette.primary.main,
+            background: theme.palette.primary.main,
+            color: theme.palette.primary.contrastText,
+            transform: 'translateY(-2px) scale(1.02)',
+            boxShadow: `0 12px 40px rgba(254, 207, 29, 0.5)`,
+          },
+          '&:active': {
+            transform: 'translateY(-1px) scale(1.01)',
+          },
+        }),
+        // Secondary button variant
+        containedSecondary: ({ theme }) => ({
+          background: theme.palette.mode === 'dark' ? '#2a2a2a' : '#f8fafc',
+          color: theme.palette.text.primary,
+          border: `1px solid ${theme.palette.mode === 'dark' ? '#404040' : '#e2e8f0'}`,
+          '&:hover': {
+            transform: 'translateY(-2px) scale(1.02)',
+            background: theme.palette.mode === 'dark' ? '#404040' : '#e2e8f0',
+            boxShadow: `0 8px 25px rgba(0, 0, 0, 0.15)`,
+          },
+          '&:active': {
+            transform: 'translateY(-1px) scale(1.01)',
+          },
+        }),
       },
     },
     MuiAppBar: {
@@ -98,6 +183,19 @@ const getTheme = (mode) => createTheme({
         root: ({ theme }) => ({
           '& .MuiOutlinedInput-root': {
             backgroundColor: theme.palette.mode === 'dark' ? '#1e1e1e' : '#ffffff',
+          },
+        }),
+      },
+    },
+    MuiChip: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          backgroundColor: theme.palette.mode === 'dark' ? 'rgba(254, 207, 29, 0.15)' : '#fecf1d',
+          color: theme.palette.mode === 'dark' ? '#ffffff' : '#1a1a1a',
+          border: theme.palette.mode === 'dark' ? '1px solid rgba(254, 207, 29, 0.3)' : 'none',
+          fontWeight: 600,
+          '&:hover': {
+            backgroundColor: theme.palette.mode === 'dark' ? 'rgba(254, 207, 29, 0.25)' : '#e6b800',
           },
         }),
       },

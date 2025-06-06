@@ -19,7 +19,7 @@
   "bugs": {
     "url": "https://github.com/techloom-org/landing-page/issues"
   },
-  "homepage": "https://github.com/techloom-org/landing-page#readme",
+  "Home": "https://github.com/techloom-org/landing-page#readme",
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
