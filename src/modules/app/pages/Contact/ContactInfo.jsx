@@ -126,9 +126,9 @@ const ContactInfo = () => {
             py: 1,
             fontSize: { xs: '0.9rem', sm: '1rem' },
             fontWeight: 600,
-            bgcolor: `${theme.palette.primary.main}10`,
+            bgcolor: `${theme.palette.primary.main}${theme.palette.mode === 'dark' ? '10' : '15'}`,
             color: 'primary.main',
-            border: `1px solid ${theme.palette.primary.main}30`,
+            border: `1px solid ${theme.palette.primary.main}${theme.palette.mode === 'dark' ? '30' : '40'}`,
           }}
         />
 
@@ -336,8 +336,8 @@ const ContactInfo = () => {
                   p: { xs: 4, sm: 5, md: 6 },
                   minHeight: { xs: '240px', sm: '260px' },
                   borderRadius: '30px',
-                  background: `linear-gradient(135deg, ${theme.palette.primary.main}08, ${theme.palette.primary.main}15)`,
-                  border: `2px solid ${theme.palette.primary.main}20`,
+                  background: `linear-gradient(135deg, ${theme.palette.primary.main}${theme.palette.mode === 'dark' ? '08' : '12'}, ${theme.palette.primary.main}${theme.palette.mode === 'dark' ? '15' : '20'})`,
+                  border: `2px solid ${theme.palette.primary.main}${theme.palette.mode === 'dark' ? '20' : '30'}`,
                   transition: 'all 0.3s ease',
                   display: 'flex',
                   flexDirection: 'column',

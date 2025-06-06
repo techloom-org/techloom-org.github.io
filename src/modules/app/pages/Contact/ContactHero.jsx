@@ -25,7 +25,7 @@ const ContactHero = () => {
           right: 0,
           bottom: 0,
           background: `radial-gradient(ellipse at center,
-            ${theme.palette.primary.main}08 0%,
+            ${theme.palette.primary.main}${theme.palette.mode === 'dark' ? '08' : '12'} 0%,
             transparent 70%)`,
           zIndex: 1,
         },
@@ -108,7 +108,7 @@ const ContactHero = () => {
           width: 200,
           height: 200,
           borderRadius: '50%',
-          background: `radial-gradient(circle, ${theme.palette.primary.main}08, transparent)`,
+          background: `radial-gradient(circle, ${theme.palette.primary.main}${theme.palette.mode === 'dark' ? '08' : '12'}, transparent)`,
           zIndex: 1,
           animation: 'float 6s ease-in-out infinite',
           '@keyframes float': {
@@ -126,7 +126,7 @@ const ContactHero = () => {
           width: 150,
           height: 150,
           borderRadius: '50%',
-          background: `radial-gradient(circle, ${theme.palette.primary.main}05, transparent)`,
+          background: `radial-gradient(circle, ${theme.palette.primary.main}${theme.palette.mode === 'dark' ? '05' : '08'}, transparent)`,
           zIndex: 1,
           animation: 'float 8s ease-in-out infinite reverse',
         }}

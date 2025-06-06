@@ -8,17 +8,24 @@ const ServicesHero = () => {
     <Box
       sx={{
         py: { xs: 10, sm: 12, md: 15 },
+        mb: { xs: 4, sm: 6, md: 15 },
         position: 'relative',
         borderRadius: theme.palette.custom.borderRadius,
         background: `linear-gradient(135deg,
-          ${theme.palette.primary.main}08 0%,
+          ${theme.palette.primary.main}${theme.palette.mode === 'dark' ? '08' : '12'} 0%,
           ${theme.palette.background.default} 50%,
-          ${theme.palette.primary.main}05 100%)`,
+          ${theme.palette.primary.main}${theme.palette.mode === 'dark' ? '05' : '08'} 100%)`,
         overflow: 'hidden',
       }}
     >
       <Container maxWidth="lg">
-        <Box sx={{ textAlign: 'center', position: 'relative', zIndex: 2 }}>
+        <Box
+          sx={{
+            textAlign: 'center',
+            position: 'relative',
+            zIndex: 2,
+          }}
+        >
           <Typography
             variant="h1"
             component="h1"
@@ -78,7 +85,7 @@ const ServicesHero = () => {
           width: 200,
           height: 200,
           borderRadius: '50%',
-          background: `radial-gradient(circle, ${theme.palette.primary.main}08, transparent)`,
+          background: `radial-gradient(circle, ${theme.palette.primary.main}${theme.palette.mode === 'dark' ? '08' : '12'}, transparent)`,
           zIndex: 1,
           animation: 'float 6s ease-in-out infinite',
           '@keyframes float': {
@@ -96,7 +103,7 @@ const ServicesHero = () => {
           width: 150,
           height: 150,
           borderRadius: '50%',
-          background: `radial-gradient(circle, ${theme.palette.primary.main}05, transparent)`,
+          background: `radial-gradient(circle, ${theme.palette.primary.main}${theme.palette.mode === 'dark' ? '05' : '08'}, transparent)`,
           zIndex: 1,
           animation: 'float 8s ease-in-out infinite reverse',
         }}

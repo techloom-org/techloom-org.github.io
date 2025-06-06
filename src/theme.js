@@ -30,9 +30,9 @@ const getTheme = (mode) =>
         disabled: mode === 'dark' ? '#888888' : '#999999',
       },
       action: {
-        hover: mode === 'dark' ? 'rgba(254, 207, 29, 0.1)' : 'rgba(255, 255, 255, 0.1)',
-        selected: mode === 'dark' ? 'rgba(254, 207, 29, 0.2)' : 'rgba(255, 255, 255, 0.2)',
-        focus: mode === 'dark' ? 'rgba(254, 207, 29, 0.3)' : 'rgba(255, 255, 255, 0.3)',
+        hover: mode === 'dark' ? 'rgba(254, 207, 29, 0.1)' : 'rgba(0, 0, 0, 0.04)',
+        selected: mode === 'dark' ? 'rgba(254, 207, 29, 0.2)' : 'rgba(0, 0, 0, 0.08)',
+        focus: mode === 'dark' ? 'rgba(254, 207, 29, 0.3)' : 'rgba(0, 0, 0, 0.12)',
       },
       // Custom colors for features
       custom: {
@@ -42,8 +42,8 @@ const getTheme = (mode) =>
         feature4: '#f4d03f', // Golden yellow
         feature5: '#f39c12', // Orange yellow
         feature6: '#d4ac0d', // Deep golden
-        gradientStart: mode === 'dark' ? 'rgba(254, 207, 29, 0.1)' : 'rgba(248, 250, 252, 0.8)',
-        gradientEnd: mode === 'dark' ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.9)',
+        gradientStart: mode === 'dark' ? 'rgba(254, 207, 29, 0.1)' : 'rgba(254, 207, 29, 0.25)',
+        gradientEnd: mode === 'dark' ? 'rgba(255, 255, 255, 0.05)' : 'rgba(248, 250, 252, 0.85)',
         headerBg: mode === 'dark' ? 'rgba(18, 18, 18, 0.95)' : 'rgba(255, 255, 255, 0.95)',
         borderRadius: 4, // Consistent border radius for custom components
       },
