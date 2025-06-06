@@ -2,37 +2,90 @@ import React from 'react';
 import { AppBar, Box, Button, Toolbar, IconButton } from '@mui/material';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { useTheme } from '@mui/material/styles';
 import { useThemeMode } from '@modules/app/hooks/useThemeMode.js';
 import techloomLogo from '@assets/images/logo.png';
 
 const Header = () => {
-  const { getByMode, toggleColorMode, isDark } = useThemeMode();
+  const { toggleColorMode, isDark } = useThemeMode();
+  const theme = useTheme();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const navigationItems = [
+    { label: 'Home', path: '/' },
+    { label: 'About', path: '/about' },
+    { label: 'Services', path: '/services' },
+    { label: 'Contact', path: '/contact' }
+  ];
+
+  const isActive = (path) => location.pathname === path;
 
   return (
     <AppBar 
       position="fixed" 
       elevation={0}
       sx={{
-        bgcolor: getByMode('rgba(254, 207, 29, 0.95)', 'background.paper'),
+        bgcolor: theme.palette.custom.headerBg,
         backdropFilter: 'blur(10px)',
       }}
     >
       <Toolbar>
         <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center' }}>
-          <img 
-            src={techloomLogo}
-            alt="Techloom Logo" 
-            style={{ 
-              height: 30, 
-              width: 'auto',
-              marginRight: 16 
+          <Box
+            onClick={() => navigate('/')}
+            sx={{ 
+              display: 'flex', 
+              alignItems: 'center', 
+              cursor: 'pointer',
+              '&:hover': { opacity: 0.8 }
             }}
-          />
+          >
+            <img 
+              src={techloomLogo}
+              alt="Techloom Logo" 
+              style={{ 
+                height: 30, 
+                width: 'auto',
+                marginRight: 16 
+              }}
+            />
+          </Box>
         </Box>
-        <Button color="secondary">About</Button>
-        <Button color="secondary">Services</Button>
-        <Button color="secondary">Contact</Button>
-        <IconButton onClick={toggleColorMode} color="inherit" sx={{ ml: 2 }}>
+        
+        <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 1 }}>
+          {navigationItems.map((item) => (
+            <Button
+              key={item.path}
+              onClick={() => navigate(item.path)}
+              sx={{
+                color: 'text.primary',
+                fontWeight: isActive(item.path) ? 'bold' : 'medium',
+                bgcolor: isActive(item.path) ? 'action.selected' : 'transparent',
+                '&:hover': {
+                  bgcolor: 'action.hover',
+                },
+                borderRadius: 2,
+                px: 2,
+                py: 1
+              }}
+            >
+              {item.label}
+            </Button>
+          ))}
+        </Box>
+        
+        <IconButton 
+          onClick={toggleColorMode} 
+          sx={{ 
+            ml: 2,
+            color: 'text.primary',
+            '&:hover': {
+              bgcolor: 'action.hover',
+            }
+          }}
+        >
           {isDark ? <Brightness7Icon /> : <Brightness4Icon />}
         </IconButton>
       </Toolbar>
