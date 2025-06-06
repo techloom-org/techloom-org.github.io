@@ -10,7 +10,7 @@ const ValueCard = ({ title, description, icon, color }) => {
       sx={{
         height: '100%',
         p: { xs: 1.5, sm: 2 },
-        borderRadius: 3,
+        borderRadius: theme.palette.custom.borderRadius,
         bgcolor: 'background.paper',
         border: `1px solid ${theme.palette.divider}`,
         position: 'relative',

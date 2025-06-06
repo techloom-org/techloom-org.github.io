@@ -12,6 +12,8 @@ const AboutHero = () => {
         alignItems: 'center',
         position: 'relative',
         overflow: 'hidden',
+        mt: '100px',
+        borderRadius: theme.palette.custom.borderRadius,
         // Gradient background
         background: `linear-gradient(135deg,
           ${theme.palette.custom.gradientStart} 0%,

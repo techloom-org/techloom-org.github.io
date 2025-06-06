@@ -13,14 +13,12 @@ const AboutCallToAction = () => {
       title: 'Start a Conversation',
       description: "Tell us about your project and let's explore how we can help",
       action: () => navigate('/contact'),
-      buttonText: 'Contact Us',
     },
     {
       icon: <Phone />,
       title: 'Schedule a Consultation',
       description: 'Book a free consultation to discuss your technology needs',
       action: () => navigate('/contact'),
-      buttonText: 'Get Started',
     },
   ];
 
@@ -29,6 +27,7 @@ const AboutCallToAction = () => {
       sx={{
         py: { xs: 8, sm: 10, md: 12 },
         position: 'relative',
+        borderRadius: theme.palette.custom.borderRadius,
         background: `linear-gradient(135deg,
           ${theme.palette.primary.main}08 0%,
           ${theme.palette.background.default} 50%,
@@ -79,7 +78,7 @@ const AboutCallToAction = () => {
                 sx={{
                   height: '100%',
                   p: 2,
-                  borderRadius: 4,
+                  borderRadius: theme.palette.custom.borderRadius,
                   bgcolor: 'background.paper',
                   border: `1px solid ${theme.palette.divider}`,
                   transition: 'all 0.3s ease',
@@ -128,31 +127,18 @@ const AboutCallToAction = () => {
                     variant="body1"
                     sx={{
                       color: 'text.secondary',
-                      mb: 3,
                       lineHeight: 1.6,
                     }}
                   >
                     {option.description}
                   </Typography>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    endIcon={<ArrowForward />}
-                    onClick={option.action}
-                    sx={{
-                      px: 4,
-                      py: 1.5,
-                    }}
-                  >
-                    {option.buttonText}
-                  </Button>
                 </CardContent>
               </Card>
             </Grid>
           ))}
         </Grid>
 
-        {/* Alternative single CTA */}
+        {/* Primary Call-to-Action */}
         <Box sx={{ textAlign: 'center' }}>
           <Stack
             direction={{ xs: 'column', sm: 'row' }}
@@ -164,29 +150,33 @@ const AboutCallToAction = () => {
               variant="contained"
               color="primary"
               size="large"
-              onClick={() => navigate('/services')}
+              onClick={() => navigate('/contact')}
               endIcon={<ArrowForward />}
               sx={{
-                px: 5,
-                py: 2,
+                px: 6,
+                py: 2.5,
                 fontSize: '1.1rem',
+                fontWeight: 600,
+                borderRadius: theme.palette.custom.borderRadius,
               }}
             >
-              Explore Our Services
+              Get Started
             </Button>
             <Button
               variant="outlined"
               color="primary"
               size="large"
-              onClick={() => navigate('/contact')}
+              onClick={() => navigate('/services')}
               endIcon={<ArrowForward />}
               sx={{
-                px: 5,
-                py: 2,
+                px: 6,
+                py: 2.5,
                 fontSize: '1.1rem',
+                fontWeight: 600,
+                borderRadius: theme.palette.custom.borderRadius,
               }}
             >
-              Let's Talk
+              View Services
             </Button>
           </Stack>
         </Box>

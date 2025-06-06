@@ -42,6 +42,7 @@ const ValuesSection = () => {
       sx={{
         py: { xs: 8, sm: 10, md: 12 },
         position: 'relative',
+        borderRadius: theme.palette.custom.borderRadius,
         background: `linear-gradient(135deg,
           ${theme.palette.background.default} 0%,
           ${theme.palette.background.contrast} 100%)`,

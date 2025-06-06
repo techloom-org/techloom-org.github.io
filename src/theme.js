@@ -2,6 +2,9 @@ import { createTheme } from '@mui/material/styles';
 
 const getTheme = (mode) =>
   createTheme({
+    shape: {
+      borderRadius: 15, // Default border radius for the app
+    },
     palette: {
       mode,
       primary: {
@@ -42,6 +45,7 @@ const getTheme = (mode) =>
         gradientStart: mode === 'dark' ? 'rgba(254, 207, 29, 0.1)' : 'rgba(248, 250, 252, 0.8)',
         gradientEnd: mode === 'dark' ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.9)',
         headerBg: mode === 'dark' ? 'rgba(18, 18, 18, 0.95)' : 'rgba(255, 255, 255, 0.95)',
+        borderRadius: 4, // Consistent border radius for custom components
       },
     },
     typography: {
@@ -66,7 +70,7 @@ const getTheme = (mode) =>
           root: ({ ownerState }) => ({
             textTransform: 'none',
             fontWeight: 600,
-            borderRadius: 12,
+            borderRadius: 15, // Using consistent border radius
             padding: '14px 32px',
             fontSize: '1.1rem',
             position: 'relative',
@@ -165,8 +169,15 @@ const getTheme = (mode) =>
       MuiCard: {
         styleOverrides: {
           root: ({ theme }) => ({
-            borderRadius: theme.spacing(2),
+            borderRadius: theme.shape.borderRadius,
             border: `1px solid ${theme.palette.mode === 'dark' ? '#2a2a2a' : '#e2e8f0'}`,
+          }),
+        },
+      },
+      MuiPaper: {
+        styleOverrides: {
+          root: ({ theme }) => ({
+            borderRadius: theme.shape.borderRadius,
           }),
         },
       },
@@ -184,6 +195,7 @@ const getTheme = (mode) =>
           root: ({ theme }) => ({
             '& .MuiOutlinedInput-root': {
               backgroundColor: theme.palette.mode === 'dark' ? '#1e1e1e' : '#ffffff',
+              borderRadius: theme.shape.borderRadius,
             },
           }),
         },
@@ -195,6 +207,7 @@ const getTheme = (mode) =>
             color: theme.palette.mode === 'dark' ? '#ffffff' : '#1a1a1a',
             border: theme.palette.mode === 'dark' ? '1px solid rgba(254, 207, 29, 0.3)' : 'none',
             fontWeight: 600,
+            borderRadius: theme.shape.borderRadius,
             '&:hover': {
               backgroundColor:
                 theme.palette.mode === 'dark' ? 'rgba(254, 207, 29, 0.25)' : '#e6b800',

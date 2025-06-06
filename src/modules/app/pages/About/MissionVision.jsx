@@ -65,7 +65,7 @@ const MissionVision = () => {
                 sx={{
                   height: '100%',
                   p: { xs: 1, sm: 2 },
-                  borderRadius: 4,
+                  borderRadius: theme.palette.custom.borderRadius,
                   bgcolor: 'background.paper',
                   border: `1px solid ${theme.palette.divider}`,
                   position: 'relative',
