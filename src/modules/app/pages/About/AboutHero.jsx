@@ -12,7 +12,7 @@ const AboutHero = () => {
         alignItems: 'center',
         position: 'relative',
         overflow: 'hidden',
-        mt: '100px',
+        // mt: '100px',
         borderRadius: theme.palette.custom.borderRadius,
         // Gradient background
         background: `linear-gradient(135deg,

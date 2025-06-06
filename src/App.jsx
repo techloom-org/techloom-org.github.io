@@ -11,7 +11,7 @@ function App() {
     <Router>
       <Box sx={{ flexGrow: 1 }}>
         <Header />
-        <Container maxWidth="lg" sx={{ px: { xs: 4, sm: 3, md: 4 } }}>
+        <Container maxWidth="lg" sx={{ px: { xs: 4, sm: 3, md: 4 }, my: '100px' }}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
