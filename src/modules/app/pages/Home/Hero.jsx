@@ -289,11 +289,6 @@ const Hero = () => {
                   sx={{
                     backdropFilter: 'blur(10px)',
                     background: `${theme.palette.background.paper}10`,
-                    '&:hover': {
-                      background: `${theme.palette.primary.main}10`,
-                      transform: 'translateY(-2px)',
-                    },
-                    transition: 'all 0.3s ease',
                   }}
                 >
                   Get Started

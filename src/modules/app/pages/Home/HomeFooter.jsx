@@ -79,10 +79,6 @@ const HomeFooter = () => {
               width: { xs: '100%', sm: 'auto' },
               borderColor: 'rgba(255,255,255,0.3)',
               color: 'white',
-              '&:hover': {
-                borderColor: 'primary.main',
-                backgroundColor: 'rgba(255,255,255,0.1)',
-              },
             }}
           >
             View Services
