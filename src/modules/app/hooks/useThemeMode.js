@@ -1,5 +1,5 @@
 import { useTheme } from '@mui/material/styles';
-import { useColorMode } from '../context/ColorModeContext';
+import { useColorMode } from '@modules/app/context/ColorModeContext';
 
 const useThemeMode = () => {
   const theme = useTheme();

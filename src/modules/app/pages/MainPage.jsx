@@ -1,9 +1,9 @@
 import React from 'react';
 import { Box, Container, Typography, Button } from '@mui/material';
-import { useThemeMode } from '../hooks/useThemeMode';
-import { useDocumentHead } from '../hooks/useDocumentHead';
-import Header from './Header';
-import techloomLogo from '../../../assets/images/logo.png';
+import { useThemeMode } from '@modules/app/hooks/useThemeMode';
+import { useDocumentHead } from '@modules/app/hooks/useDocumentHead';
+import Header from '@modules/app/components/Header';
+import techloomLogo from '@assets/images/logo.png';
 
 const MainPage = () => {
   const { getByMode } = useThemeMode();

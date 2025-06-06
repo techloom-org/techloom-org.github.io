@@ -2,8 +2,8 @@ import React from 'react';
 import { AppBar, Box, Button, Toolbar, IconButton } from '@mui/material';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
-import { useThemeMode } from '../hooks/useThemeMode.js';
-import techloomLogo from '../../../assets/images/logo.png';
+import { useThemeMode } from '@modules/app/hooks/useThemeMode.js';
+import techloomLogo from '@assets/images/logo.png';
 
 const Header = () => {
   const { getByMode, toggleColorMode, isDark } = useThemeMode();

@@ -3,9 +3,9 @@ import { createRoot } from 'react-dom/client';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { HelmetProvider } from 'react-helmet-async';
-import App from './App';
-import getTheme from './theme';
-import { ColorModeProvider } from './modules/app/context/ColorModeContext';
+import App from '@/App';
+import getTheme from '@/theme';
+import { ColorModeProvider } from '@modules/app/context/ColorModeContext';
 
 function Root() {
   const [mode, setMode] = useState('light');
