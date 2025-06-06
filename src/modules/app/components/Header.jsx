@@ -1,10 +1,9 @@
-import React from 'react';
-import { AppBar, Box, Button, Toolbar, IconButton } from '@mui/material';
+import { useThemeMode } from '@modules/app/hooks/useThemeMode.js';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { AppBar, Box, Button, IconButton, Toolbar } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-import { useThemeMode } from '@modules/app/hooks/useThemeMode.js';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Logo from './Logo';
 
 const Header = () => {
@@ -17,14 +16,14 @@ const Header = () => {
     { label: 'Home', path: '/' },
     { label: 'About', path: '/about' },
     { label: 'Services', path: '/services' },
-    { label: 'Contact', path: '/contact' }
+    { label: 'Contact', path: '/contact' },
   ];
 
   const isActive = (path) => location.pathname === path;
 
   return (
-    <AppBar 
-      position="fixed" 
+    <AppBar
+      position="fixed"
       elevation={0}
       sx={{
         bgcolor: theme.palette.custom.headerBg,
@@ -42,17 +41,17 @@ const Header = () => {
         <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center' }}>
           <Box
             onClick={() => navigate('/')}
-            sx={{ 
-              display: 'flex', 
-              alignItems: 'center', 
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
               cursor: 'pointer',
-              '&:hover': { opacity: 0.8 }
+              '&:hover': { opacity: 0.8 },
             }}
           >
             <Logo height={40} />
           </Box>
         </Box>
-        
+
         <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 2 }}>
           {navigationItems.map((item) => (
             <Button
@@ -76,17 +75,17 @@ const Header = () => {
             </Button>
           ))}
         </Box>
-        
-        <IconButton 
-          onClick={toggleColorMode} 
-          sx={{ 
+
+        <IconButton
+          onClick={toggleColorMode}
+          sx={{
             ml: 3,
             color: 'text.primary',
             minWidth: '48px',
             minHeight: '48px',
             '&:hover': {
               bgcolor: 'action.hover',
-            }
+            },
           }}
         >
           {isDark ? <Brightness7Icon /> : <Brightness4Icon />}

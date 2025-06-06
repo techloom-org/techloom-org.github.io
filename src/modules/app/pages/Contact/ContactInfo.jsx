@@ -1,6 +1,5 @@
-import React from 'react';
-import { Box, Typography, Card, CardContent, useTheme } from '@mui/material';
-import { Email, Phone, LocationOn } from '@mui/icons-material';
+import { Email, LocationOn, Phone } from '@mui/icons-material';
+import { Box, Card, CardContent, Typography, useTheme } from '@mui/material';
 
 const ContactInfo = () => {
   const theme = useTheme();
@@ -10,20 +9,20 @@ const ContactInfo = () => {
       icon: <Email sx={{ fontSize: 30, color: theme.palette.text.primary }} />,
       title: 'Email',
       details: 'hello@techloom.com',
-      description: 'Send us an email and we\'ll respond within 24 hours'
+      description: "Send us an email and we'll respond within 24 hours",
     },
     {
       icon: <Phone sx={{ fontSize: 30, color: theme.palette.text.primary }} />,
       title: 'Phone',
       details: '+1 (555) 123-4567',
-      description: 'Call us during business hours for immediate assistance'
+      description: 'Call us during business hours for immediate assistance',
     },
     {
       icon: <LocationOn sx={{ fontSize: 30, color: theme.palette.text.primary }} />,
       title: 'Office',
       details: 'San Francisco, CA',
-      description: 'Visit our office or schedule a virtual meeting'
-    }
+      description: 'Visit our office or schedule a virtual meeting',
+    },
   ];
 
   return (
@@ -34,7 +33,7 @@ const ContactInfo = () => {
           sx={{
             bgcolor: 'background.paper',
             borderRadius: 3,
-            p: 2
+            p: 2,
           }}
         >
           <CardContent sx={{ p: 3 }}>
@@ -46,7 +45,7 @@ const ContactInfo = () => {
                 sx={{
                   ml: 2,
                   fontWeight: 'bold',
-                  color: 'text.primary'
+                  color: 'text.primary',
                 }}
               >
                 {info.title}
@@ -57,7 +56,7 @@ const ContactInfo = () => {
               sx={{
                 color: 'text.primary',
                 fontWeight: 'bold',
-                mb: 1
+                mb: 1,
               }}
             >
               {info.details}
@@ -66,7 +65,7 @@ const ContactInfo = () => {
               variant="body2"
               sx={{
                 color: 'text.secondary',
-                lineHeight: 1.5
+                lineHeight: 1.5,
               }}
             >
               {info.description}

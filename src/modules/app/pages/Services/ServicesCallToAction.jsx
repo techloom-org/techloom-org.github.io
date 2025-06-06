@@ -1,5 +1,4 @@
-import React from 'react';
-import { Box, Typography, Button } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 const ServicesCallToAction = () => {
@@ -22,12 +21,12 @@ const ServicesCallToAction = () => {
               fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' },
               fontWeight: 'bold',
               color: 'text.primary',
-              mb: 4
+              mb: 4,
             }}
           >
             Ready to Get Started?
           </Typography>
-          
+
           <Typography
             variant="h5"
             component="p"
@@ -35,12 +34,12 @@ const ServicesCallToAction = () => {
               fontSize: { xs: '1.1rem', sm: '1.3rem' },
               color: 'text.secondary',
               mb: 6,
-              lineHeight: 1.6
+              lineHeight: 1.6,
             }}
           >
             Let's discuss how we can help transform your ideas into exceptional digital solutions.
           </Typography>
-          
+
           <Button
             variant="contained"
             color="primary"

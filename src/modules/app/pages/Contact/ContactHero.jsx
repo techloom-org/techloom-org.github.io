@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, Typography } from '@mui/material';
 
 const ContactHero = () => {
@@ -18,12 +17,12 @@ const ContactHero = () => {
           fontSize: { xs: '2.5rem', sm: '3rem', md: '4rem' },
           fontWeight: 'bold',
           color: 'text.primary',
-          mb: 4
+          mb: 4,
         }}
       >
         Contact Us
       </Typography>
-      
+
       <Typography
         variant="h4"
         component="p"
@@ -33,7 +32,7 @@ const ContactHero = () => {
           color: 'text.secondary',
           maxWidth: '600px',
           mx: 'auto',
-          lineHeight: 1.6
+          lineHeight: 1.6,
         }}
       >
         Ready to start your next project? Let's discuss how we can bring your vision to life.

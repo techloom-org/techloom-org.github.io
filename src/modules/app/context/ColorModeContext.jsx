@@ -1,4 +1,4 @@
-import React, { createContext, useContext } from 'react';
+import { createContext, useContext } from 'react';
 
 export const ColorModeContext = createContext();
 
@@ -7,9 +7,5 @@ export function useColorMode() {
 }
 
 export function ColorModeProvider({ children, value }) {
-  return (
-    <ColorModeContext.Provider value={value}>
-      {children}
-    </ColorModeContext.Provider>
-  );
+  return <ColorModeContext.Provider value={value}>{children}</ColorModeContext.Provider>;
 }

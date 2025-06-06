@@ -11,3 +11,31 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* Performance optimizations for About page animations */
+
+/* Hardware acceleration for cards */
+.MuiCard-root {
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Optimize transformations */
+.MuiAvatar-root {
+  transform-style: preserve-3d;
+}
+
+/* Prevent layout shifts during animations */
+.card-bg {
+  contain: layout style paint;
+}
+
+/* Optimize hover states */
+.MuiCard-root:hover {
+  isolation: isolate;
+}
+
+/* Reduce paint complexity */
+.icon-avatar {
+  contain: layout;
+}

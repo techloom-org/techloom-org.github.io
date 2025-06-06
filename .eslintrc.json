@@ -1,0 +1,80 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "@eslint/js/recommended",
+    "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
+    "plugin:react-hooks/recommended",
+    "plugin:jsx-a11y/recommended"
+  ],
+  "overrides": [],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "plugins": ["react", "react-hooks", "jsx-a11y"],
+  "rules": {
+    // Unused variables and imports
+    "no-unused-vars": [
+      "warn",
+      {
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_",
+        "caughtErrorsIgnorePattern": "^_"
+      }
+    ],
+
+    // React specific rules
+    "react/prop-types": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-uses-react": "off",
+    "react/jsx-uses-vars": "error",
+    "react/jsx-no-unused-vars": "warn",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+
+    // General code quality
+    "no-console": "warn",
+    "no-debugger": "warn",
+    "no-alert": "warn",
+    "prefer-const": "warn",
+    "no-var": "error",
+    "eqeqeq": ["error", "always"],
+    "curly": ["error", "all"],
+    "no-eval": "error",
+    "no-implied-eval": "error",
+    "no-new-func": "error",
+    "no-script-url": "error",
+
+    // Import/Export
+    "no-duplicate-imports": "error",
+
+    // Accessibility
+    "jsx-a11y/alt-text": "warn",
+    "jsx-a11y/anchor-has-content": "warn",
+    "jsx-a11y/aria-role": "warn",
+    "jsx-a11y/img-redundant-alt": "warn",
+    "jsx-a11y/no-access-key": "warn",
+
+    // Styling and formatting (will be handled by Prettier)
+    "indent": "off",
+    "quotes": "off",
+    "semi": "off",
+    "comma-dangle": "off",
+    "max-len": "off"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "ignorePatterns": ["dist", "build", "node_modules", "*.config.js", "*.config.mjs"]
+}

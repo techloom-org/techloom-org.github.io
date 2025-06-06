@@ -1,8 +1,7 @@
-import React from 'react';
-import { Card, CardContent, Typography, Avatar } from '@mui/material';
+import { Avatar, Card, CardContent, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 
-const FeatureCard = ({ feature, index }) => {
+const FeatureCard = ({ feature }) => {
   const theme = useTheme();
 
   return (
@@ -18,11 +17,12 @@ const FeatureCard = ({ feature, index }) => {
         border: `1px solid ${theme.palette.divider}`,
         '&:hover': {
           transform: 'translateY(-8px)',
-          boxShadow: theme.palette.mode === 'dark' 
-            ? '0 20px 40px rgba(0,0,0,0.3)'
-            : '0 20px 40px rgba(0,0,0,0.1)',
+          boxShadow:
+            theme.palette.mode === 'dark'
+              ? '0 20px 40px rgba(0,0,0,0.3)'
+              : '0 20px 40px rgba(0,0,0,0.1)',
           border: `1px solid ${feature.color}`,
-        }
+        },
       }}
     >
       <CardContent sx={{ p: 0 }}>
@@ -33,7 +33,7 @@ const FeatureCard = ({ feature, index }) => {
             width: { xs: 70, sm: 80 },
             height: { xs: 70, sm: 80 },
             mb: { xs: 2, sm: 3 },
-            mx: 'auto'
+            mx: 'auto',
           }}
         >
           {feature.icon}
@@ -46,7 +46,7 @@ const FeatureCard = ({ feature, index }) => {
             color: 'text.primary',
             mb: { xs: 1.5, sm: 2 },
             textAlign: 'center',
-            fontSize: { xs: '1.2rem', sm: '1.4rem' }
+            fontSize: { xs: '1.2rem', sm: '1.4rem' },
           }}
         >
           {feature.title}
@@ -57,7 +57,7 @@ const FeatureCard = ({ feature, index }) => {
             color: 'text.secondary',
             lineHeight: 1.6,
             textAlign: 'center',
-            fontSize: { xs: '1rem', sm: '1rem' }
+            fontSize: { xs: '1rem', sm: '1rem' },
           }}
         >
           {feature.description}

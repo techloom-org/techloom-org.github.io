@@ -1,5 +1,4 @@
-import React from 'react';
-import { Card, CardContent, Box, Typography } from '@mui/material';
+import { Box, Card, CardContent, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 
 const ServiceCard = ({ icon, title, description }) => {
@@ -16,14 +15,12 @@ const ServiceCard = ({ icon, title, description }) => {
         '&:hover': {
           transform: 'translateY(-4px)',
           boxShadow: theme.palette.mode === 'dark' ? 3 : 6,
-        }
+        },
       }}
     >
       <CardContent sx={{ p: 4, height: '100%', display: 'flex', flexDirection: 'column' }}>
-        <Box sx={{ mb: 3, textAlign: 'center' }}>
-          {icon}
-        </Box>
-        
+        <Box sx={{ mb: 3, textAlign: 'center' }}>{icon}</Box>
+
         <Typography
           variant="h5"
           component="h3"
@@ -33,12 +30,12 @@ const ServiceCard = ({ icon, title, description }) => {
             fontWeight: 'bold',
             color: 'text.primary',
             mb: 2,
-            textAlign: 'center'
+            textAlign: 'center',
           }}
         >
           {title}
         </Typography>
-        
+
         <Typography
           variant="body1"
           sx={{
@@ -46,7 +43,7 @@ const ServiceCard = ({ icon, title, description }) => {
             fontSize: '1rem',
             lineHeight: 1.7,
             textAlign: 'center',
-            flexGrow: 1
+            flexGrow: 1,
           }}
         >
           {description}

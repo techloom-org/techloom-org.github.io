@@ -1,16 +1,11 @@
-import React from 'react';
-import { Box } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
 import techloomLogo from '@assets/images/logo.png';
 import techloomLogoDark from '@assets/images/logo_dark.png';
+import { Box } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 
-const Logo = ({ 
-  height = 120, 
-  width = 'auto', 
-  sx = {} 
-}) => {
+const Logo = ({ height = 120, width = 'auto', sx = {} }) => {
   const theme = useTheme();
-  
+
   // Use appropriate logo based on theme mode
   const logoSrc = theme.palette.mode === 'dark' ? techloomLogoDark : techloomLogo;
 
@@ -19,16 +14,16 @@ const Logo = ({
       sx={{
         position: 'relative',
         display: 'inline-block',
-        ...sx
+        ...sx,
       }}
     >
-      <img 
+      <img
         src={logoSrc}
-        alt="Techloom Logo" 
-        style={{ 
-          height, 
+        alt="Techloom Logo"
+        style={{
+          height,
           width,
-          display: 'block'
+          display: 'block',
         }}
       />
       {/* Removed overlay since we now use proper dark mode logo */}

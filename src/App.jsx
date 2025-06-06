@@ -1,11 +1,10 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Box, Container } from '@mui/material';
-import Header from '@modules/app/components/Header';
 import Home from '@/modules/app/pages/Home';
+import Header from '@modules/app/components/Header';
 import About from '@modules/app/pages/About';
-import Services from '@modules/app/pages/Services';
 import Contact from '@modules/app/pages/Contact';
+import Services from '@modules/app/pages/Services';
+import { Box, Container } from '@mui/material';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
 function App() {
   return (

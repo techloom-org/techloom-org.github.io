@@ -1,40 +1,30 @@
-import React, { useState } from 'react';
-import { 
-  Box, 
-  Typography, 
-  Card, 
-  CardContent, 
-  TextField,
-  Button,
-  Grid,
-  Alert
-} from '@mui/material';
 import { Send } from '@mui/icons-material';
+import { Alert, Box, Button, Card, CardContent, Grid, TextField, Typography } from '@mui/material';
+import { useState } from 'react';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     company: '',
-    message: ''
+    message: '',
   });
   const [showAlert, setShowAlert] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Here you would typically send the form data to your backend
-    console.log('Form submitted:', formData);
     setShowAlert(true);
     setFormData({ name: '', email: '', company: '', message: '' });
-    
+
     // Hide alert after 5 seconds
     setTimeout(() => setShowAlert(false), 5000);
   };
@@ -44,7 +34,7 @@ const ContactForm = () => {
       sx={{
         bgcolor: 'background.paper',
         borderRadius: 3,
-        p: 3
+        p: 3,
       }}
     >
       <CardContent sx={{ p: 4 }}>
@@ -56,18 +46,14 @@ const ContactForm = () => {
             fontSize: { xs: '1.8rem', sm: '2.2rem' },
             fontWeight: 'bold',
             color: 'text.primary',
-            mb: 4
+            mb: 4,
           }}
         >
           Send us a Message
         </Typography>
 
         {showAlert && (
-          <Alert 
-            severity="success" 
-            sx={{ mb: 3 }}
-            onClose={() => setShowAlert(false)}
-          >
+          <Alert severity="success" sx={{ mb: 3 }} onClose={() => setShowAlert(false)}>
             Thank you for your message! We'll get back to you soon.
           </Alert>
         )}

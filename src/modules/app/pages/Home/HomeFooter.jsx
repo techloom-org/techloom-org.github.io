@@ -1,6 +1,5 @@
-import React from 'react';
-import { Box, Typography, Button, Stack } from '@mui/material';
 import { ArrowForward } from '@mui/icons-material';
+import { Box, Button, Stack, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 
@@ -28,7 +27,7 @@ const HomeFooter = () => {
             fontSize: { xs: '1.8rem', sm: '2.5rem', md: '3rem' },
             fontWeight: 800,
             mb: { xs: 2, sm: 3 },
-            lineHeight: 1.2
+            lineHeight: 1.2,
           }}
         >
           Ready to Transform Your Ideas?
@@ -42,19 +41,20 @@ const HomeFooter = () => {
             maxWidth: '600px',
             mx: 'auto',
             lineHeight: 1.5,
-            px: { xs: 1, sm: 0 }
+            px: { xs: 1, sm: 0 },
           }}
         >
-          Let's discuss how we can help you achieve your technology goals and drive your business forward.
+          Let's discuss how we can help you achieve your technology goals and drive your business
+          forward.
         </Typography>
-        <Stack 
-          direction={{ xs: 'column', sm: 'row' }} 
+        <Stack
+          direction={{ xs: 'column', sm: 'row' }}
           spacing={{ xs: 2, sm: 3 }}
           sx={{ justifyContent: 'center' }}
         >
-          <Button 
-            variant="contained" 
-            color="primary" 
+          <Button
+            variant="contained"
+            color="primary"
             size="large"
             onClick={() => navigate('/contact')}
             endIcon={<ArrowForward />}
@@ -62,13 +62,13 @@ const HomeFooter = () => {
               py: { xs: 1.8, sm: 1.5 },
               fontSize: { xs: '1.05rem', sm: '1rem' },
               fontWeight: 600,
-              width: { xs: '100%', sm: 'auto' }
+              width: { xs: '100%', sm: 'auto' },
             }}
           >
             Start Your Project
           </Button>
-          <Button 
-            variant="outlined" 
+          <Button
+            variant="outlined"
             color="primary"
             size="large"
             onClick={() => navigate('/services')}
@@ -81,8 +81,8 @@ const HomeFooter = () => {
               color: 'white',
               '&:hover': {
                 borderColor: 'primary.main',
-                backgroundColor: 'rgba(255,255,255,0.1)'
-              }
+                backgroundColor: 'rgba(255,255,255,0.1)',
+              },
             }}
           >
             View Services
