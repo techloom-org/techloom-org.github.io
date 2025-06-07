@@ -16,15 +16,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/techloom-org/techloom-org.github.io.git"
+    "url": "git+https://github.com/techloom-org/landing-page.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/techloom-org/techloom-org.github.io/issues"
+    "url": "https://github.com/techloom-org/landing-page/issues"
   },
-  "Home": "https://github.com/techloom-org/techloom-org.github.io#readme",
+  "Home": "https://github.com/techloom-org/landing-page#readme",
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
