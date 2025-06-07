@@ -32,9 +32,11 @@
     "@mui/material": "^7.1.1",
     "@rsbuild/core": "^1.3.22",
     "@rsbuild/plugin-react": "^1.3.2",
+    "framer-motion": "^12.16.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-router-dom": "^7.6.2"
+    "react-router-dom": "^7.6.2",
+    "swiper": "^11.2.8"
   },
   "devDependencies": {
     "@babel/core": "^7.27.4",

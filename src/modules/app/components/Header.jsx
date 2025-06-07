@@ -1,3 +1,4 @@
+import { getNavigationItems } from '@modules/app/config/navigation';
 import { useThemeMode } from '@modules/app/hooks/useThemeController';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
@@ -11,13 +12,7 @@ const Header = () => {
   const theme = useTheme();
   const navigate = useNavigate();
   const location = useLocation();
-
-  const navigationItems = [
-    { label: 'Home', path: '/' },
-    { label: 'About', path: '/about' },
-    { label: 'Services', path: '/services' },
-    { label: 'Contact', path: '/contact' },
-  ];
+  const navigationItems = getNavigationItems();
 
   const isActive = (path) => location.pathname === path;
 

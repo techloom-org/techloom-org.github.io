@@ -8,7 +8,6 @@ const ServicesHero = () => {
     <Box
       sx={{
         py: { xs: 10, sm: 12, md: 15 },
-        mb: { xs: 4, sm: 6, md: 15 },
         position: 'relative',
         borderRadius: theme.palette.custom.borderRadius,
         background: `linear-gradient(135deg,
@@ -24,6 +23,7 @@ const ServicesHero = () => {
             textAlign: 'center',
             position: 'relative',
             zIndex: 2,
+            mb: 10,
           }}
         >
           <Typography
