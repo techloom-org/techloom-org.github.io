@@ -12,7 +12,7 @@ import 'swiper/css/effect-coverflow';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-export default function Carousel({ title, images }) {
+export default function Carousel({ title, images, mode = 'gallery' }) {
   const [selectedImage, setSelectedImage] = useState(null);
   const theme = useTheme();
 
@@ -23,6 +23,57 @@ export default function Carousel({ title, images }) {
   const handleClose = () => {
     setSelectedImage(null);
   };
+
+  // Single image mode configuration
+  const singleModeConfig = {
+    slidesPerView: 1,
+    centeredSlides: true,
+    spaceBetween: 50,
+    effect: 'slide',
+    autoplay: {
+      delay: 4000,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true,
+    },
+    pagination: {
+      clickable: true,
+      dynamicBullets: true,
+    },
+    navigation: true,
+    modules: [Pagination, Navigation, Autoplay],
+    speed: 800,
+    loop: true,
+  };
+
+  // Gallery mode configuration (current behavior)
+  const galleryModeConfig = {
+    effect: 'coverflow',
+    grabCursor: true,
+    centeredSlides: true,
+    slidesPerView: 'auto',
+    coverflowEffect: {
+      rotate: 30,
+      stretch: 0,
+      depth: 80,
+      modifier: 1,
+      slideShadows: false,
+    },
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true,
+    },
+    pagination: {
+      clickable: true,
+      dynamicBullets: true,
+    },
+    navigation: true,
+    modules: [EffectCoverflow, Pagination, Navigation, Autoplay],
+    speed: 500,
+    loop: true,
+  };
+
+  const swiperConfig = mode === 'single' ? singleModeConfig : galleryModeConfig;
 
   return (
     <Box sx={{ py: 8, minHeight: '700px' }}>
@@ -59,8 +110,7 @@ export default function Carousel({ title, images }) {
               lineHeight: 1.6,
             }}
           >
-            Explore the comprehensive features and user interface of our Tupperware e-commerce
-            platform
+            Explore the comprehensive features and interface designs
           </Typography>
         </motion.div>
       )}
@@ -74,26 +124,43 @@ export default function Carousel({ title, images }) {
             paddingBottom: '60px',
             overflow: 'visible',
           },
-          '& .swiper-slide': {
-            background: 'transparent',
-            width: '320px',
-            height: '550px',
-            cursor: 'pointer',
-            borderRadius: '20px',
-            overflow: 'visible',
-            transform: 'scale(0.85)',
-            transition: 'transform 0.2s ease',
-            opacity: 0.8,
-          },
-          '& .swiper-slide-active': {
-            transform: 'scale(1)',
-            opacity: 1,
-            zIndex: 10,
-          },
-          '& .swiper-slide-next, & .swiper-slide-prev': {
-            transform: 'scale(0.92)',
-            opacity: 0.9,
-          },
+          // Gallery mode styles (current behavior)
+          ...(mode === 'gallery' && {
+            '& .swiper-slide': {
+              background: 'transparent',
+              width: '320px',
+              height: '550px',
+              cursor: 'pointer',
+              borderRadius: '20px',
+              overflow: 'visible',
+              transform: 'scale(0.85)',
+              transition: 'transform 0.2s ease',
+              opacity: 0.8,
+            },
+            '& .swiper-slide-active': {
+              transform: 'scale(1)',
+              opacity: 1,
+              zIndex: 10,
+            },
+            '& .swiper-slide-next, & .swiper-slide-prev': {
+              transform: 'scale(0.92)',
+              opacity: 0.9,
+            },
+          }),
+          // Single mode styles
+          ...(mode === 'single' && {
+            '& .swiper-slide': {
+              background: 'transparent',
+              width: '100%',
+              height: '600px',
+              cursor: 'pointer',
+              borderRadius: '20px',
+              overflow: 'visible',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            },
+          }),
           '& .swiper-pagination-bullet': {
             background: theme.palette.primary.main,
             opacity: 0.3,
@@ -126,32 +193,7 @@ export default function Carousel({ title, images }) {
           },
         }}
       >
-        <Swiper
-          effect="coverflow"
-          grabCursor={true}
-          centeredSlides={true}
-          slidesPerView="auto"
-          coverflowEffect={{
-            rotate: 30,
-            stretch: 0,
-            depth: 80,
-            modifier: 1,
-            slideShadows: false,
-          }}
-          autoplay={{
-            delay: 3000,
-            disableOnInteraction: false,
-            pauseOnMouseEnter: true,
-          }}
-          pagination={{
-            clickable: true,
-            dynamicBullets: true,
-          }}
-          navigation={true}
-          modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
-          speed={500}
-          loop={true}
-        >
+        <Swiper {...swiperConfig}>
           {images.map((image, index) => (
             <SwiperSlide key={index}>
               <Box
@@ -166,7 +208,10 @@ export default function Carousel({ title, images }) {
                   alignItems: 'center',
                   justifyContent: 'center',
                   '&:hover .image-container': {
-                    boxShadow: `0 20px 40px rgba(254, 207, 29, 0.4), 0 0 30px rgba(254, 207, 29, 0.3)`,
+                    boxShadow:
+                      mode === 'single'
+                        ? `0 25px 50px rgba(0,0,0,0.3), 0 0 40px ${theme.palette.primary.main}30`
+                        : `0 20px 40px rgba(254, 207, 29, 0.4), 0 0 30px rgba(254, 207, 29, 0.3)`,
                   },
                   '&:hover .overlay': {
                     opacity: 1,
@@ -186,6 +231,11 @@ export default function Carousel({ title, images }) {
                     maxHeight: '100%',
                     backgroundColor: 'transparent',
                     border: 'none',
+                    ...(mode === 'single' && {
+                      width: '100%',
+                      maxWidth: '900px',
+                      height: '500px',
+                    }),
                   }}
                 >
                   <Box
@@ -193,11 +243,11 @@ export default function Carousel({ title, images }) {
                     src={image.src}
                     alt={image.alt || `Gallery image ${index + 1}`}
                     sx={{
-                      width: 'auto',
-                      height: 'auto',
+                      width: mode === 'single' ? '100%' : 'auto',
+                      height: mode === 'single' ? '100%' : 'auto',
                       maxWidth: '100%',
-                      maxHeight: '550px',
-                      objectFit: 'contain',
+                      maxHeight: mode === 'single' ? '100%' : '550px',
+                      objectFit: mode === 'single' ? 'cover' : 'contain',
                       display: 'block',
                       border: 'none',
                       outline: 'none',

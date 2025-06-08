@@ -116,21 +116,6 @@ const PortfolioCard = ({ project }) => {
               }}
             />
           )}
-
-          {/* Category Badge */}
-          <Chip
-            label={project.category}
-            size="small"
-            sx={{
-              position: 'absolute',
-              top: 30,
-              left: 30,
-              bgcolor: `${theme.palette.background.paper}95`,
-              backdropFilter: 'blur(10px)',
-              border: `1px solid ${theme.palette.divider}`,
-              fontWeight: 500,
-            }}
-          />
         </Box>
 
         <CardContent sx={{ p: 3 }}>

@@ -1,29 +1,49 @@
-import { Box, Container, Typography } from '@mui/material';
+import { Box } from '@mui/material';
+import Carousel from '../../components/Carousel';
+import Intro from '../../components/Intro';
 
-const EvoShutter = () => {
+// Import images
+import analyticsReportsImage from '../../../../assets/images/portfolio/evoshutter/analytics-reports.png';
+import customerManagementImage from '../../../../assets/images/portfolio/evoshutter/customer-management.png';
+import dashboardImage from '../../../../assets/images/portfolio/evoshutter/dashboard.png';
+import heroImage from '../../../../assets/images/portfolio/evoshutter/hero.png';
+import installationSchedulingImage from '../../../../assets/images/portfolio/evoshutter/installation-scheduling.png';
+import inventoryControlImage from '../../../../assets/images/portfolio/evoshutter/inventory-control.png';
+import quotationsImage from '../../../../assets/images/portfolio/evoshutter/quotations.png';
+import salesTrackingImage from '../../../../assets/images/portfolio/evoshutter/sales-tracking.png';
+
+export default function Evoshutter() {
+  const introData = {
+    title: 'EvoShutter CRM System',
+    description:
+      'A comprehensive CRM system for one of the biggest rolling shutter companies in Egypt called EvoShutter. This system handles literally everything from quotations and sales targets to installation scheduling and customer management.',
+    images: [{ src: heroImage, alt: 'EvoShutter CRM dashboard overview' }],
+    techStack: ['React.js', 'Node.js', 'Cloud Functions', 'Material-UI', 'Firebase'],
+    keyFeatures: [
+      'Complete CRM Solution',
+      'Quotations Management',
+      'Sales Target Tracking',
+      'Installation Scheduling',
+      'Customer Management',
+      'Inventory Control',
+    ],
+  };
+
+  const carouselImages = [
+    { src: heroImage, alt: 'EvoShutter CRM dashboard overview' },
+    { src: dashboardImage, alt: 'Main CRM dashboard interface' },
+    { src: quotationsImage, alt: 'Quotations management system' },
+    { src: salesTrackingImage, alt: 'Sales target tracking dashboard' },
+    { src: customerManagementImage, alt: 'Customer management module' },
+    { src: installationSchedulingImage, alt: 'Installation scheduling calendar' },
+    { src: inventoryControlImage, alt: 'Inventory control system' },
+    { src: analyticsReportsImage, alt: 'Analytics and reporting dashboard' },
+  ];
+
   return (
-    <Container maxWidth="lg" sx={{ py: 8 }}>
-      <Box sx={{ textAlign: 'center', mb: 6 }}>
-        <Typography variant="h2" sx={{ mb: 2, fontWeight: 700 }}>
-          EvoShutter
-        </Typography>
-        <Typography variant="h5" sx={{ color: 'text.secondary', mb: 4 }}>
-          Smart Shutter Control System
-        </Typography>
-      </Box>
-
-      {/* Placeholder content - we'll customize this later */}
-      <Box sx={{ textAlign: 'center' }}>
-        <Typography variant="body1" sx={{ mb: 4 }}>
-          This is the EvoShutter project page. We'll customize this with unique sections, images,
-          videos, and content specific to this IoT project.
-        </Typography>
-        <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-          Technologies: React, IoT, Arduino, WebSockets
-        </Typography>
-      </Box>
-    </Container>
+    <Box>
+      <Intro {...introData} />
+      <Carousel title="Evoshutter landing page" images={carouselImages} mode="single" />
+    </Box>
   );
-};
-
-export default EvoShutter;
+}

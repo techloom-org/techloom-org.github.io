@@ -7,9 +7,15 @@ import TupperwareStoreProject from '../projects/TupperwareStore';
 // Import Tupperware thumbnail image
 import tupperwareThumbnail from '../../../assets/images/portfolio/tupperware/hero-1-main-interface.png';
 
-// Placeholder thumbnail for projects without specific images
-const createPlaceholderUrl = (title) =>
-  `https://via.placeholder.com/640x360/4A90E2/FFFFFF?text=${encodeURIComponent(title)}`;
+// Import Dawwa thumbnail images
+import dawwaWebsite from '../../../assets/images/portfolio/dawwa/website.png';
+import dawwaWebsiteDark from '../../../assets/images/portfolio/dawwa/website_dark.png';
+
+// Import Landing Pages thumbnail image
+import landingPagesHero from '../../../assets/images/portfolio/landing-pages/hero-section.png';
+
+// Import EvoShutter thumbnail image
+import evoshutterHero from '../../../assets/images/portfolio/evoshutter/hero.png';
 
 export const projectRegistry = {
   'tupperware-store': {
@@ -18,10 +24,9 @@ export const projectRegistry = {
       title: 'Tupperware Store',
       description: 'Premier marketplace for Tupperware franchisees in Egypt',
       thumbnail: tupperwareThumbnail,
-      category: 'Mobile App',
       technologies: ['Native Android', 'Firebase', 'WhatsApp Integration', 'Admin Panel'],
       featured: true,
-      date: '2024-12-01',
+      date: '2019-12-01',
       status: 'completed',
     },
   },
@@ -30,22 +35,22 @@ export const projectRegistry = {
     metadata: {
       title: 'Dawwa',
       description: 'Pharmaceuticals e-commerce marketplace for pharmacies',
-      thumbnail: createPlaceholderUrl('Dawwa Platform'),
-      category: 'Web Development',
-      technologies: ['React', 'Firebase', 'Material-UI'],
+      thumbnail: dawwaWebsite,
+      thumbnailDark: dawwaWebsiteDark, // Add dark mode thumbnail
+      technologies: ['React Native', 'React.js', 'Firebase', 'Material-UI', 'Algolia'],
       featured: true,
-      date: '2024-11-15',
+      date: '2023-11-15',
       status: 'completed',
     },
   },
   evoshutter: {
     component: EvoShutter,
     metadata: {
-      title: 'EvoShutter',
-      description: 'Smart shutter control system',
-      thumbnail: createPlaceholderUrl('EvoShutter IoT'),
-      category: 'IoT/Hardware',
-      technologies: ['React', 'IoT', 'Arduino', 'WebSockets'],
+      title: 'EvoShutter CRM System',
+      description:
+        'Comprehensive CRM system for EvoShutter rolling shutter company handling quotations, sales targets, and installation scheduling',
+      thumbnail: evoshutterHero,
+      technologies: ['React.js', 'Node.js', 'Cloud Functions', 'Material-UI', 'Firebase'],
       featured: true,
       date: '2024-10-20',
       status: 'completed',
@@ -55,12 +60,11 @@ export const projectRegistry = {
     component: LandingPages,
     metadata: {
       title: 'Landing Pages Collection',
-      description: 'Custom landing page designs and implementations',
-      thumbnail: createPlaceholderUrl('Landing Pages'),
-      category: 'Web Design',
-      technologies: ['React', 'Material-UI', 'Responsive Design'],
-      featured: false,
-      date: '2024-09-10',
+      description: 'Professional law firm website featuring Attorney Ahmed B. Ismail',
+      thumbnail: landingPagesHero,
+      technologies: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap', 'PHP', 'Responsive Design'],
+      featured: true,
+      date: '2022-09-10',
       status: 'completed',
     },
   },
@@ -68,18 +72,15 @@ export const projectRegistry = {
 
 // Helper function to get all projects
 export const getAllProjects = () => {
-  return Object.entries(projectRegistry).map(([id, project]) => ({
-    id,
-    ...project.metadata,
-  }));
+  return Object.entries(projectRegistry)
+    .map(([id, project]) => ({
+      id,
+      ...project.metadata,
+    }))
+    .sort((a, b) => new Date(b.date) - new Date(a.date)); // Sort by date descending (newest first)
 };
 
 // Helper function to get featured projects
 export const getFeaturedProjects = () => {
   return getAllProjects().filter((project) => project.featured);
-};
-
-// Helper function to get projects by category
-export const getProjectsByCategory = (category) => {
-  return getAllProjects().filter((project) => project.category === category);
 };

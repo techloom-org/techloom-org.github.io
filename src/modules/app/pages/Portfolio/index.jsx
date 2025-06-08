@@ -97,12 +97,6 @@ const Portfolio = () => {
                 />
                 <CardContent sx={{ p: 3 }}>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
-                    <Chip
-                      label={project.category}
-                      size="small"
-                      color="primary"
-                      variant="outlined"
-                    />
                     {project.featured && (
                       <Chip
                         label="Featured"

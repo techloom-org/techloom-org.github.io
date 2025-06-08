@@ -58,41 +58,6 @@ export default function Intro({ title, description, images, keyFeatures, techSta
                 animation: 'fadeInUp 0.6s ease-out forwards',
               }}
             >
-              {/* Modern Badge */}
-              <Box
-                sx={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: 1,
-                  mb: { xs: 3, sm: 4 },
-                  px: 3,
-                  py: 1.5,
-                  borderRadius: '50px',
-                  bgcolor: `${theme.palette.primary.main}10`,
-                  border: `1px solid ${theme.palette.primary.main}20`,
-                  backdropFilter: 'blur(10px)',
-                }}
-              >
-                <Box
-                  sx={{
-                    fontSize: '1.2rem',
-                    lineHeight: 1,
-                  }}
-                >
-                  📱
-                </Box>
-                <Typography
-                  sx={{
-                    fontSize: '0.9rem',
-                    fontWeight: 600,
-                    color: 'text.primary',
-                    letterSpacing: '0.5px',
-                  }}
-                >
-                  Mobile Application
-                </Typography>
-              </Box>
-
               <Typography
                 variant="h1"
                 component="h1"
@@ -100,7 +65,7 @@ export default function Intro({ title, description, images, keyFeatures, techSta
                   fontSize: { xs: '2.25rem', sm: '3rem', md: '3.75rem' },
                   fontWeight: 800,
                   lineHeight: { xs: 1.2, sm: 1.1 },
-                  mb: { xs: 3, sm: 4 },
+                  my: { xs: 3, sm: 4 },
                   background: `linear-gradient(135deg,
                     ${theme.palette.text.primary} 0%,
                     ${theme.palette.primary.main} 100%)`,
