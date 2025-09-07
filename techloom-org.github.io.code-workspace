@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"problems.showCurrentInStatus": true,
+		"problems.decorations.enabled": true,
+		"emmet.includeLanguages": {
+			"javascript": "javascriptreact"
+		}
+	}
+}
