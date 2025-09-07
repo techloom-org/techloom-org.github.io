@@ -12,7 +12,7 @@ import 'swiper/css/effect-coverflow';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-export default function Carousel({ title, images, mode = 'gallery' }) {
+export default function Carousel({ title, description, images, mode = 'gallery' }) {
   const [selectedImage, setSelectedImage] = useState(null);
   const theme = useTheme();
 
@@ -105,12 +105,12 @@ export default function Carousel({ title, images, mode = 'gallery' }) {
               mb: 6,
               textAlign: 'center',
               color: 'text.secondary',
-              maxWidth: '600px',
+              maxWidth: '800px',
               mx: 'auto',
               lineHeight: 1.6,
             }}
           >
-            Explore the comprehensive features and interface designs
+            {description || 'Explore the comprehensive features and interface designs'}
           </Typography>
         </motion.div>
       )}

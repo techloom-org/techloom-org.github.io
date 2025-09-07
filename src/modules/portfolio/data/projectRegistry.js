@@ -1,7 +1,7 @@
 // Project registry - maps project IDs to their components and metadata
 import Dawwa from '../projects/Dawwa';
-import EvoShutter from '../projects/Evoshutter';
 import LandingPages from '../projects/LandingPages';
+import EvoShutter from '../projects/Shutterflow';
 import TupperwareStoreProject from '../projects/TupperwareStore';
 
 // Import Tupperware thumbnail image
@@ -14,8 +14,8 @@ import dawwaWebsiteDark from '../../../assets/images/portfolio/dawwa/website_dar
 // Import Landing Pages thumbnail image
 import landingPagesHero from '../../../assets/images/portfolio/landing-pages/hero-section.png';
 
-// Import EvoShutter thumbnail image
-import evoshutterHero from '../../../assets/images/portfolio/evoshutter/hero.png';
+// Import Shutter Flow thumbnail image
+import shutterflowThumbnail from '../../../assets/images/portfolio/shutterflow/image.png';
 
 export const projectRegistry = {
   'tupperware-store': {
@@ -43,13 +43,13 @@ export const projectRegistry = {
       status: 'completed',
     },
   },
-  evoshutter: {
+  shutterflow: {
     component: EvoShutter,
     metadata: {
-      title: 'EvoShutter CRM System',
+      title: 'Shutter Flow',
       description:
-        'Comprehensive CRM system for EvoShutter rolling shutter company handling quotations, sales targets, and installation scheduling',
-      thumbnail: evoshutterHero,
+        'Complete business management system with three integrated parts: Admin Panel for comprehensive business management, Customer Panel for client interactions, and Marketing Website for online presence.',
+      thumbnail: shutterflowThumbnail,
       technologies: ['React.js', 'Node.js', 'Cloud Functions', 'Material-UI', 'Firebase'],
       featured: true,
       date: '2024-10-20',
