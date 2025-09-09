@@ -18,9 +18,13 @@ export default defineConfig({
   },
   html: {
     title: 'Techloom',
+    template: './index.html',
   },
   output: {
     assetPrefix: '/',
+    copy: [
+      { from: 'public', to: '' },
+    ],
   },
   resolve: {
     alias: {

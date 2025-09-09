@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Techloom</title>
+    <script type="text/javascript">
+        // GitHub Pages SPA support: Store the attempted URL and redirect to index
+        sessionStorage.redirect = location.href;
+        location.replace(location.protocol + '//' + location.hostname + 
+                        (location.port ? ':' + location.port : '') + 
+                        '/?/' + location.pathname.slice(1) + location.search + location.hash);
+    </script>
+</head>
+<body>
+</body>
+</html>
