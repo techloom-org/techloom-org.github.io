@@ -85,11 +85,6 @@ const PortfolioGrid = () => {
         py: { xs: 8, sm: 10, md: 12 },
         px: { xs: 2, sm: 3, md: 4 },
         position: 'relative',
-        overflow: 'hidden',
-        borderRadius: theme.palette.custom.borderRadius,
-        background: `linear-gradient(135deg,
-          ${theme.palette.background.default} 0%,
-          ${theme.palette.background.contrast} 100%)`,
       }}
     >
       <motion.div
@@ -139,7 +134,7 @@ const PortfolioGrid = () => {
       <motion.div variants={containerVariants} initial="hidden" animate="visible">
         <Grid container spacing={4}>
           {projects.map((project) => (
-            <Grid size={{ xs: 12, md: 6 }} key={project.id}>
+            <Grid size={{ xs: 12 }} key={project.id}>
               <motion.div variants={itemVariants}>
                 <PortfolioCard project={project} />
               </motion.div>

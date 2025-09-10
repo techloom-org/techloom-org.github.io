@@ -1,5 +1,5 @@
-import { Launch } from '@mui/icons-material';
-import { Box, Card, CardContent, Chip, IconButton, Stack, Typography } from '@mui/material';
+import CardSwap, { Card as SwapCard } from '@/design-system/components/CardSwap';
+import { Box, Card, CardContent, Chip, Stack, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
@@ -11,6 +11,7 @@ const PortfolioCard = ({ project }) => {
   const handleClick = () => {
     navigate(`/portfolio/${project.id}`);
   };
+
   return (
     <motion.div
       whileHover={{
@@ -22,180 +23,210 @@ const PortfolioCard = ({ project }) => {
       <Card
         elevation={0}
         sx={{
-          height: '100%',
+          height: 350, // Increased height to prevent cutoff
           borderRadius: theme.palette.custom.borderRadius,
-          bgcolor: 'background.paper',
-          border: `1px solid ${theme.palette.divider}`,
+          bgcolor: 'transparent', // Remove white background
+          border: 'none', // Remove borders
           cursor: 'pointer',
-          overflow: 'hidden',
+          overflow: 'visible', // Changed from hidden to visible
           position: 'relative',
+          display: 'flex',
           transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
           '&:hover': {
-            boxShadow: `0 20px 40px rgba(0,0,0,0.4)`,
-            borderColor: theme.palette.primary.main,
-            '& .project-thumbnail': {
-              transform: 'scale(1.05)',
-            },
-            '& .hover-overlay': {
-              opacity: 1,
-            },
+            transform: 'translateY(-4px)', // Subtle lift effect instead of shadow
           },
         }}
         onClick={handleClick}
       >
-        {/* Project Thumbnail */}
-        <Box
+        {/* Content - Left Side */}
+        <CardContent
           sx={{
-            height: 280,
-            position: 'relative',
-            overflow: 'hidden',
-            bgcolor: theme.palette.grey[100],
+            flex: 1,
+            p: { xs: 3, md: 4 },
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            height: '100%',
+            bgcolor: 'transparent',
           }}
         >
-          <Box
-            className="project-thumbnail"
-            sx={{
-              width: '100%',
-              height: '100%',
-              backgroundImage: `url(${project.images?.[0]})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              transition: 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-            }}
-          />
-
-          {/* Hover Overlay */}
-          <Box
-            className="hover-overlay"
-            sx={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              background: `linear-gradient(135deg,
-                ${theme.palette.primary.main}90,
-                ${theme.palette.secondary.main}70)`,
-              opacity: 0,
-              transition: 'opacity 0.3s ease',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
-            <IconButton
+          <Box>
+            <Typography
+              variant="h4"
               sx={{
-                bgcolor: 'white',
-                color: theme.palette.primary.main,
-                '&:hover': {
-                  bgcolor: 'white',
-                  transform: 'scale(1.1)',
-                },
+                fontWeight: 700,
+                mb: 2,
+                color: 'text.primary',
+                lineHeight: 1.3,
+                fontSize: { xs: '1.5rem', md: '2rem' },
               }}
             >
-              <Launch />
-            </IconButton>
+              {project.title}
+            </Typography>
+
+            <Typography
+              variant="body1"
+              sx={{
+                color: 'text.secondary',
+                mb: 3,
+                lineHeight: 1.6,
+                fontSize: '1.1rem',
+                display: '-webkit-box',
+                WebkitLineClamp: 3,
+                WebkitBoxOrient: 'vertical',
+                overflow: 'hidden',
+              }}
+            >
+              {project.description}
+            </Typography>
+
+            {/* Technology Stack */}
+            <Stack direction="row" spacing={1} flexWrap="wrap" gap={1} sx={{ mb: 3 }}>
+              {project.technologies?.slice(0, 4).map((tech) => (
+                <Chip
+                  key={tech}
+                  label={tech}
+                  size="medium"
+                  variant="outlined"
+                  sx={{
+                    fontWeight: 500,
+                    borderColor: theme.palette.primary.main,
+                    color: theme.palette.primary.main,
+                    bgcolor: 'transparent',
+                    '&:hover': {
+                      bgcolor: theme.palette.primary.main,
+                      color: 'white',
+                    },
+                  }}
+                />
+              ))}
+              {project.technologies?.length > 4 && (
+                <Chip
+                  label={`+${project.technologies.length - 4}`}
+                  size="medium"
+                  variant="outlined"
+                  sx={{
+                    borderColor: theme.palette.grey[400],
+                    color: theme.palette.text.secondary,
+                    bgcolor: 'transparent',
+                  }}
+                />
+              )}
+            </Stack>
           </Box>
 
-          {/* Featured Badge */}
-          {project.featured && (
-            <Chip
-              label="Featured"
-              color="primary"
-              size="small"
-              sx={{
-                position: 'absolute',
-                top: 30,
-                right: 30,
-                bgcolor: theme.palette.primary.main,
-                color: 'white',
-                fontWeight: 600,
-                backdropFilter: 'blur(10px)',
-                boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
-              }}
-            />
-          )}
-        </Box>
-
-        <CardContent sx={{ p: 3 }}>
-          <Typography
-            variant="h5"
-            sx={{
-              fontWeight: 700,
-              mb: 1.5,
-              color: 'text.primary',
-              lineHeight: 1.3,
-            }}
-          >
-            {project.title}
-          </Typography>
-
-          <Typography
-            variant="body2"
-            sx={{
-              color: 'text.secondary',
-              mb: 3,
-              lineHeight: 1.6,
-              display: '-webkit-box',
-              WebkitLineClamp: 2,
-              WebkitBoxOrient: 'vertical',
-              overflow: 'hidden',
-            }}
-          >
-            {project.description}
-          </Typography>
-
-          {/* Technology Stack */}
-          <Stack direction="row" spacing={1} flexWrap="wrap" gap={1} sx={{ mb: 3 }}>
-            {project.technologies?.slice(0, 3).map((tech) => (
-              <Chip key={tech} label={tech} size="small" variant="outlined" />
-            ))}
-            {project.technologies?.length > 3 && (
-              <Chip
-                label={`+${project.technologies.length - 3}`}
-                size="small"
-                variant="outlined"
-                sx={{
-                  borderColor: theme.palette.grey[400],
-                  color: theme.palette.text.secondary,
-                  fontSize: '0.75rem',
-                }}
-              />
-            )}
-          </Stack>
-
-          {/* Date */}
+          {/* Footer with Date and Status */}
           <Box
             sx={{
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'center',
+              pt: 2,
+              borderTop: `1px solid ${theme.palette.divider}`,
+              mt: 'auto', // Push to bottom
             }}
           >
             <Typography
-              variant="caption"
+              variant="body2"
               sx={{
                 color: 'text.secondary',
                 fontWeight: 500,
-                fontSize: '0.8rem',
+                fontSize: '0.9rem',
               }}
             >
               {new Date(project.date).toLocaleDateString('en-US', {
                 year: 'numeric',
-                month: 'short',
+                month: 'long',
+                day: 'numeric',
               })}
             </Typography>
 
             <Box
               sx={{
-                width: 8,
-                height: 8,
-                borderRadius: '50%',
-                bgcolor: project.status === 'completed' ? 'success.main' : 'warning.main',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 1,
               }}
-            />
+            >
+              <Typography
+                variant="caption"
+                sx={{
+                  color: project.status === 'completed' ? 'success.main' : 'warning.main',
+                  fontWeight: 600,
+                  textTransform: 'uppercase',
+                  letterSpacing: 0.5,
+                }}
+              >
+                {project.status}
+              </Typography>
+              <Box
+                sx={{
+                  width: 8,
+                  height: 8,
+                  borderRadius: '50%',
+                  bgcolor: project.status === 'completed' ? 'success.main' : 'warning.main',
+                }}
+              />
+            </Box>
           </Box>
         </CardContent>
+
+        {/* Project Images with CardSwap - Right Side */}
+        <Box
+          sx={{
+            width: { xs: '100%', md: '50%' },
+            height: '100%',
+            position: 'relative',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            bgcolor: 'transparent',
+            p: 3,
+          }}
+        >
+          {project.images && project.images.length > 0 ? (
+            <CardSwap
+              height={250}
+              cardDistance={40}
+              verticalDistance={50}
+              delay={4000}
+              skewAmount={4}
+              easing="elastic"
+            >
+              {project.images.map((image, index) => (
+                <SwapCard
+                  key={index}
+                  style={{
+                    backgroundImage: `url(${image})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    cursor: 'pointer',
+                    border: 'none',
+                    borderRadius: '30px',
+                    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)',
+                  }}
+                />
+              ))}
+            </CardSwap>
+          ) : (
+            <Box
+              sx={{
+                width: '100%',
+                height: '100%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: theme.palette.grey[800],
+                color: theme.palette.text.secondary,
+                borderRadius: theme.palette.custom.borderRadius,
+                fontSize: '1rem',
+                fontWeight: 500,
+              }}
+            >
+              No Image Available
+            </Box>
+          )}
+        </Box>
       </Card>
     </motion.div>
   );

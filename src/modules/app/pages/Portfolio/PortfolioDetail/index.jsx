@@ -54,17 +54,12 @@ const PortfolioDetail = () => {
   }
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1, pt: 8 }}>
       {/* Project Intro */}
       <Intro
         title={project.title}
         description={project.description}
-        images={
-          project.images?.map((src, index) => ({
-            src,
-            alt: `${project.title} - Image ${index + 1}`,
-          })) || []
-        }
+        images={project.images || []}
         keyFeatures={project.features}
         techStack={project.technologies}
       />
@@ -82,21 +77,24 @@ const PortfolioDetail = () => {
         {/* Project Sections */}
         {!sectionsLoading && sections.length > 0 && (
           <Box sx={{ mb: 6 }}>
-            {sections.map((section, index) => (
-              <Section
-                key={section.id}
-                title={section.title}
-                description={section.description}
-                images={section.images || []}
-                layout={
-                  index % 3 === 0
-                    ? 'text-left-images-right'
-                    : index % 3 === 1
-                      ? 'text-right-images-left'
-                      : 'text-top-images-bottom'
-                }
-              />
-            ))}
+            {sections.map((section, index) => {
+              return (
+                <Section
+                  key={section.id}
+                  title={section.title}
+                  description={section.description}
+                  images={section.images || []}
+                  portrait={section.type === 'portrait'}
+                  layout={
+                    index % 3 === 0
+                      ? 'text-left-images-right'
+                      : index % 3 === 1
+                        ? 'text-right-images-left'
+                        : 'text-top-images-bottom'
+                  }
+                />
+              );
+            })}
           </Box>
         )}
 

@@ -48,10 +48,10 @@ const getTheme = () =>
         borderRadius: 4,
         // Aurora background configuration
         aurora: {
-          colorStops: ['#1a1a1a', '#fecf1d', '#2a2a2a'], // Dark base, gold accent, paper
+          colorStops: ['#1a1a1a', '#fecf1d', '#2a2a2a'],
           blend: 0.3,
           amplitude: 0.8,
-          speed: 0.3,
+          speed: 0.6,
         },
       },
     },

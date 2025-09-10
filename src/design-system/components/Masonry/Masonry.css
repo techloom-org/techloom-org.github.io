@@ -1,0 +1,33 @@
+.list {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.item-wrapper {
+  position: absolute;
+  cursor: pointer;
+  will-change: transform;
+}
+
+.item-img {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.color-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(255, 0, 150, 0.5), rgba(0, 150, 255, 0.5));
+  opacity: 0;
+  pointer-events: none;
+  border-radius: 8px;
+}

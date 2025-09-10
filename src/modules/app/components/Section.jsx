@@ -1,17 +1,38 @@
-import { Close, ZoomIn } from '@mui/icons-material';
-import { Box, Dialog, Grid, IconButton, Typography } from '@mui/material';
+import { Close } from '@mui/icons-material';
+import { Box, Dialog, IconButton, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import { Autoplay, EffectCoverflow, Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
-export default function Section({
-  title,
-  description,
-  images,
-  layout = 'text-left-images-right', // 'text-left-images-right', 'text-right-images-left', 'text-top-images-bottom'
-}) {
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/effect-coverflow';
+import 'swiper/css/pagination';
+
+export default function Section({ title, description, images, portrait = false }) {
   const [selectedImage, setSelectedImage] = useState(null);
   const theme = useTheme();
+
+  // Custom styles for swiper pagination
+  const swiperStyles = `
+    .custom-swiper .swiper-pagination-bullet {
+      background-color: rgba(255, 255, 255, 0.3) !important;
+      opacity: 1 !important;
+      width: 12px !important;
+      height: 12px !important;
+      transition: all 0.3s ease !important;
+      border: none !important;
+    }
+    .custom-swiper .swiper-pagination-bullet-active {
+      background-color: ${theme.palette.primary.main} !important;
+      transform: scale(1.2) !important;
+    }
+    .custom-swiper .swiper-pagination {
+      bottom: 20px !important;
+    }
+  `;
 
   const handleImageClick = (image) => {
     setSelectedImage(image);
@@ -34,7 +55,7 @@ export default function Section({
           fontSize: { xs: '1.8rem', sm: '2.2rem', md: '2.8rem' },
           fontWeight: 700,
           mb: 3,
-          textAlign: layout === 'text-top-images-bottom' ? 'center' : 'left',
+          textAlign: 'center',
           background: `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
           backgroundClip: 'text',
           WebkitBackgroundClip: 'text',
@@ -43,150 +64,174 @@ export default function Section({
       >
         {title}
       </Typography>
-      <Typography
-        variant="h6"
-        sx={{
-          color: 'text.secondary',
-          lineHeight: 1.6,
-          textAlign: layout === 'text-top-images-bottom' ? 'center' : 'left',
-          maxWidth: layout === 'text-top-images-bottom' ? '800px' : 'none',
-          mx: layout === 'text-top-images-bottom' ? 'auto' : 0,
-        }}
-      >
-        {description}
-      </Typography>
+      {Array.isArray(description) ? (
+        description.map((paragraph, index) => (
+          <Typography
+            key={index}
+            variant="h6"
+            sx={{
+              color: 'text.secondary',
+              lineHeight: 1.6,
+              maxWidth: '800px',
+              mx: 'auto',
+              mb: index < description.length - 1 ? 3 : 0,
+            }}
+          >
+            {paragraph}
+          </Typography>
+        ))
+      ) : (
+        <Typography
+          variant="h6"
+          sx={{
+            color: 'text.secondary',
+            lineHeight: 1.6,
+            textAlign: 'center',
+            maxWidth: '800px',
+            mx: 'auto',
+          }}
+        >
+          {description}
+        </Typography>
+      )}
     </motion.div>
   );
 
-  const renderImagesGrid2 = () => {
-    // Function to get size and height for different image positions
-    const getImageConfig = (index, _) => {
-      // First image is always bigger
-      if (index === 0) {
-        return { size: { xs: 12, sm: 12, md: 12 }, height: '400px' }; // Big first image
-      }
-
-      // All other images are the same size
-      return { size: { xs: 6, sm: 6, md: 4 }, height: '250px' }; // Same size for all others
-    };
-
+  const renderImagesSwiper = () => {
     return (
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.6, delay: 0.2 }}
       >
-        <Grid container spacing={2}>
-          {images.map((image, index) => {
-            const config = getImageConfig(index, images.length);
-            return (
-              <Grid size={config.size} key={index}>
+        <Swiper
+          effect={portrait ? 'slide' : 'coverflow'}
+          grabCursor={true}
+          centeredSlides={true}
+          slidesPerView={portrait ? 'auto' : 'auto'}
+          spaceBetween={portrait ? 20 : 30}
+          className="custom-swiper"
+          breakpoints={
+            portrait
+              ? {
+                  320: {
+                    slidesPerView: 1.8,
+                    spaceBetween: 15,
+                  },
+                  640: {
+                    slidesPerView: 2.5,
+                    spaceBetween: 20,
+                  },
+                  768: {
+                    slidesPerView: 3,
+                    spaceBetween: 25,
+                  },
+                  1024: {
+                    slidesPerView: 4,
+                    spaceBetween: 30,
+                  },
+                }
+              : undefined
+          }
+          coverflowEffect={
+            !portrait
+              ? {
+                  rotate: 30,
+                  stretch: 0,
+                  depth: 100,
+                  modifier: 1.5,
+                  slideShadows: false,
+                }
+              : undefined
+          }
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+          }}
+          pagination={{
+            clickable: true,
+            dynamicBullets: true,
+          }}
+          modules={portrait ? [Pagination, Autoplay] : [EffectCoverflow, Pagination, Autoplay]}
+          style={{
+            width: '100%',
+            paddingTop: portrait ? '30px' : '50px',
+            paddingBottom: portrait ? '60px' : '80px',
+          }}
+          sx={{
+            '& .swiper-pagination-bullet': {
+              backgroundColor: 'rgba(255, 255, 255, 0.3) !important',
+              opacity: '1 !important',
+              width: '12px !important',
+              height: '12px !important',
+              transition: 'all 0.3s ease !important',
+              border: 'none !important',
+            },
+            '& .swiper-pagination-bullet-active': {
+              backgroundColor: `${theme.palette.primary.main} !important`,
+              transform: 'scale(1.2) !important',
+            },
+            '& .swiper-pagination': {
+              bottom: '20px !important',
+            },
+            '& .swiper-pagination-bullet:not(.swiper-pagination-bullet-active)': {
+              backgroundColor: 'rgba(255, 255, 255, 0.3) !important',
+            },
+          }}
+        >
+          {images.map((image, index) => (
+            <SwiperSlide
+              key={index}
+              style={{
+                width: portrait ? '40%' : '80%',
+                maxWidth: portrait ? '250px' : 'none',
+              }}
+            >
+              <Box
+                onClick={() => handleImageClick(image)}
+                sx={{
+                  cursor: 'pointer',
+                  borderRadius: portrait ? '0px' : '20px',
+                  overflow: 'hidden',
+                  width: '100%',
+                  height: portrait ? { xs: '350px', sm: '400px', md: '450px' } : '100%',
+                  position: 'relative',
+                  background: 'transparent',
+                  ...(portrait && {
+                    aspectRatio: '9/16', // Mobile portrait aspect ratio
+                    maxHeight: { xs: '350px', sm: '400px', md: '450px' },
+                    maxWidth: { xs: '200px', sm: '225px', md: '250px' },
+                    mx: 'auto',
+                  }),
+                }}
+              >
                 <Box
-                  onClick={() => handleImageClick(image)}
+                  component="img"
+                  src={image}
+                  alt={`Section image ${index + 1}`}
                   sx={{
-                    cursor: 'pointer',
-                    borderRadius: '16px',
-                    overflow: 'hidden',
-                    position: 'relative',
-                    height: config.height,
-                    aspectRatio: '1', // Force square aspect ratio
-                    background: theme.palette.background.paper,
-                    boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
-                    transition: 'all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)',
-                    '&:hover': {
-                      transform: 'translateY(-5px) scale(1.02)',
-                      boxShadow: `0 20px 40px rgba(0,0,0,0.2), 0 0 30px ${theme.palette.primary.main}20`,
-                      '& .overlay': {
-                        opacity: 1,
-                      },
-                    },
+                    width: '100%',
+                    height: '100%',
+                    objectFit: portrait ? 'contain' : 'cover',
+                    objectPosition: 'center',
+                    display: 'block',
+                    borderRadius: '0px',
                   }}
-                >
-                  <Box
-                    component="img"
-                    src={image.src}
-                    alt={image.alt || `Section image ${index + 1}`}
-                    sx={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      transition: 'transform 0.3s ease',
-                    }}
-                  />
-
-                  {/* Hover Overlay */}
-                  <Box
-                    className="overlay"
-                    sx={{
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      bottom: 0,
-                      background: 'rgba(0,0,0,0.4)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      opacity: 0,
-                      transition: 'opacity 0.3s ease',
-                    }}
-                  >
-                    <IconButton
-                      sx={{
-                        backgroundColor: 'rgba(255,255,255,0.9)',
-                        color: 'primary.main',
-                        width: 50,
-                        height: 50,
-                        '&:hover': {
-                          backgroundColor: 'white',
-                          transform: 'scale(1.1)',
-                        },
-                      }}
-                    >
-                      <ZoomIn sx={{ fontSize: 28 }} />
-                    </IconButton>
-                  </Box>
-                </Box>
-              </Grid>
-            );
-          })}
-        </Grid>
+                />
+              </Box>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </motion.div>
     );
   };
 
-  const renderLayout = () => {
-    switch (layout) {
-      case 'text-right-images-left':
-        return (
-          <Grid container spacing={6} alignItems="center">
-            <Grid size={{ xs: 12, md: 6 }}>{renderImagesGrid2()}</Grid>
-            <Grid size={{ xs: 12, md: 6 }}>{renderTextContent()}</Grid>
-          </Grid>
-        );
-
-      case 'text-top-images-bottom':
-        return (
-          <Box>
-            <Box sx={{ mb: 6 }}>{renderTextContent()}</Box>
-            {renderImagesGrid2()}
-          </Box>
-        );
-
-      case 'text-left-images-right':
-      default:
-        return (
-          <Grid container spacing={6} alignItems="center">
-            <Grid size={{ xs: 12, md: 6 }}>{renderTextContent()}</Grid>
-            <Grid size={{ xs: 12, md: 6 }}>{renderImagesGrid2()}</Grid>
-          </Grid>
-        );
-    }
-  };
-
   return (
     <Box sx={{ py: 8 }}>
-      {renderLayout()}
+      <style>{swiperStyles}</style>
+      <Box sx={{ mb: 6 }}>{renderTextContent()}</Box>
+      {renderImagesSwiper()}
 
       {/* Image Modal */}
       <Dialog
@@ -241,14 +286,18 @@ export default function Section({
             </IconButton>
 
             <img
-              src={selectedImage.src}
-              alt={selectedImage.alt}
+              src={selectedImage}
+              alt={`Selected`}
               style={{
-                maxWidth: '90%',
-                maxHeight: '90%',
+                maxWidth: portrait ? '80%' : '90%',
+                maxHeight: portrait ? '95%' : '90%',
                 objectFit: 'contain',
                 borderRadius: '8px',
                 boxShadow: '0 20px 60px rgba(0,0,0,0.5)',
+                ...(portrait && {
+                  width: 'auto',
+                  height: 'auto',
+                }),
               }}
             />
           </Box>

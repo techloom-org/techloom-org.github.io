@@ -3,6 +3,42 @@ import { Box, Container, Typography, useTheme } from '@mui/material';
 export default function Intro({ title, description, images, keyFeatures, techStack }) {
   const theme = useTheme();
 
+  // Helper function to check if an item is a video
+  const isVideo = (src) => {
+    if (typeof src !== 'string') {
+      return false;
+    }
+    const videoExtensions = ['.mp4', '.webm', '.ogg', '.mov', '.avi'];
+    return (
+      videoExtensions.some((ext) => src.toLowerCase().includes(ext)) ||
+      src.includes('youtube.com') ||
+      src.includes('vimeo.com') ||
+      src.includes('youtu.be')
+    );
+  };
+
+  // Component to render media (image or video)
+  const MediaComponent = ({ src, alt, sx }) => {
+    if (isVideo(src)) {
+      return (
+        <Box
+          component="video"
+          src={src}
+          autoPlay
+          muted
+          loop
+          playsInline
+          sx={{
+            ...sx,
+            objectFit: 'cover',
+          }}
+        />
+      );
+    }
+
+    return <Box component="img" src={src} alt={alt} sx={sx} />;
+  };
+
   return (
     <Box
       sx={{
@@ -214,11 +250,10 @@ export default function Intro({ title, description, images, keyFeatures, techSta
                     mb: { xs: 6, sm: 8 },
                   }}
                 >
-                  {/* Main Central Phone */}
-                  <Box
-                    component="img"
-                    src={images[0]?.src}
-                    alt={images[0]?.alt || 'Main app interface'}
+                  {/* Main Central Image/Video */}
+                  <MediaComponent
+                    src={images[0]}
+                    alt="Main interface"
                     sx={{
                       position: 'relative',
                       zIndex: 3,
@@ -238,66 +273,53 @@ export default function Intro({ title, description, images, keyFeatures, techSta
                     }}
                   />
 
-                  {/* Background Phones */}
-                  {images[1] && (
-                    <Box
-                      component="img"
-                      src={images[1]?.src}
-                      alt={images[1]?.alt || 'App feature'}
-                      sx={{
-                        position: 'absolute',
-                        top: '8%',
-                        left: { xs: '-25%', sm: '-30%', md: '-35%' },
-                        zIndex: 1,
-                        width: { xs: 260, sm: 320, md: 380, lg: 420 },
-                        height: 'auto',
-                        objectFit: 'contain',
-                        borderRadius: '22px',
-                        boxShadow: `0 20px 40px rgba(0,0,0,0.3)`,
-                        border: `1px solid transparent`,
-                        opacity: 0.6,
-                        transform: 'rotate3d(0, 0, 1, -8deg)',
-                        transition:
-                          'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease',
-                        cursor: 'pointer',
-                        willChange: 'transform, opacity',
-                        '&:hover': {
-                          opacity: 0.9,
-                          transform: 'rotate3d(0, 0, 1, -6deg) scale3d(1.05, 1.05, 1)',
-                        },
-                      }}
-                    />
-                  )}
+                  {/* Background Images/Videos - Dynamically positioned */}
+                  {images.slice(1).map((mediaUrl, index) => {
+                    const isLeft = index % 2 === 0;
+                    const layerIndex = Math.floor(index / 2);
+                    const rotationAngle = isLeft ? -(8 + layerIndex * 3) : 12 + layerIndex * 3;
+                    const opacity = Math.max(0.2, 0.6 - layerIndex * 0.15);
+                    const sizeMultiplier = Math.max(0.6, 1 - layerIndex * 0.1);
 
-                  {images[2] && (
-                    <Box
-                      component="img"
-                      src={images[2]?.src}
-                      alt={images[2]?.alt || 'App feature'}
-                      sx={{
-                        position: 'absolute',
-                        top: '12%',
-                        right: { xs: '-25%', sm: '-30%', md: '-35%' },
-                        zIndex: 1,
-                        width: { xs: 240, sm: 300, md: 360, lg: 400 },
-                        height: 'auto',
-                        objectFit: 'contain',
-                        borderRadius: '20px',
-                        boxShadow: `0 16px 32px rgba(0,0,0,0.25)`,
-                        border: `1px solid transparent`,
-                        opacity: 0.5,
-                        transform: 'rotate3d(0, 0, 1, 12deg)',
-                        transition:
-                          'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease',
-                        cursor: 'pointer',
-                        willChange: 'transform, opacity',
-                        '&:hover': {
-                          opacity: 0.8,
-                          transform: 'rotate3d(0, 0, 1, 8deg) scale3d(1.05, 1.05, 1)',
-                        },
-                      }}
-                    />
-                  )}
+                    return (
+                      <MediaComponent
+                        key={index + 1}
+                        src={mediaUrl}
+                        alt={`Feature ${index + 2}`}
+                        sx={{
+                          position: 'absolute',
+                          top: `${8 + layerIndex * 4}%`,
+                          [isLeft ? 'left' : 'right']: {
+                            xs: `${-25 - layerIndex * 5}%`,
+                            sm: `${-30 - layerIndex * 5}%`,
+                            md: `${-35 - layerIndex * 5}%`,
+                          },
+                          zIndex: Math.max(1, 2 - layerIndex),
+                          width: {
+                            xs: 260 * sizeMultiplier,
+                            sm: 320 * sizeMultiplier,
+                            md: 380 * sizeMultiplier,
+                            lg: 420 * sizeMultiplier,
+                          },
+                          height: 'auto',
+                          objectFit: 'contain',
+                          borderRadius: `${22 - layerIndex * 2}px`,
+                          boxShadow: `0 ${20 - layerIndex * 4}px ${40 - layerIndex * 8}px rgba(0,0,0,${0.3 - layerIndex * 0.05})`,
+                          border: `1px solid transparent`,
+                          opacity: opacity,
+                          transform: `rotate3d(0, 0, 1, ${rotationAngle}deg)`,
+                          transition:
+                            'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease',
+                          cursor: 'pointer',
+                          willChange: 'transform, opacity',
+                          '&:hover': {
+                            opacity: Math.min(1, opacity + 0.3),
+                            transform: `rotate3d(0, 0, 1, ${rotationAngle * 0.7}deg) scale3d(1.05, 1.05, 1)`,
+                          },
+                        }}
+                      />
+                    );
+                  })}
                 </Box>
               </Box>
             )}
