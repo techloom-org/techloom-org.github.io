@@ -1,4 +1,4 @@
-import { EmojiEvents, Group, Handshake, Lightbulb } from '@mui/icons-material';
+import { EmojiEvents, Group, Handshake } from '@mui/icons-material';
 import { Box, Container, Grid, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import ValueCard from './ValueCard';
@@ -13,13 +13,6 @@ const ValuesSection = () => {
         'We strive for excellence in every line of code, every design decision, and every client interaction.',
       icon: <EmojiEvents />,
       color: theme.palette.custom.feature1,
-    },
-    {
-      title: 'Innovation',
-      description:
-        'We embrace new technologies and approaches, constantly pushing boundaries to deliver cutting-edge solutions.',
-      icon: <Lightbulb />,
-      color: theme.palette.custom.feature2,
     },
     {
       title: 'Integrity',
@@ -79,9 +72,9 @@ const ValuesSection = () => {
           </Typography>
         </Box>
 
-        <Grid container spacing={{ xs: 3, sm: 4 }}>
+        <Grid sx={{ p: { xs: 2, md: 4 } }} container spacing={{ xs: 3, md: 4 }}>
           {values.map((value, index) => (
-            <Grid key={index} size={{ xs: 12, sm: 6, md: 3 }}>
+            <Grid key={index} size={{ xs: 12, sm: 6, md: 4 }}>
               <ValueCard
                 title={value.title}
                 description={value.description}

@@ -1,16 +1,8 @@
 import { appRoutes } from '@modules/app/routes';
-import { portfolioRoutes } from '@modules/portfolio/routes';
 
 // Central route registry that collects all module routes
 export const getAllRoutes = () => {
-  return [
-    ...appRoutes,
-    ...portfolioRoutes,
-    // Future modules can easily be added here:
-    // ...blogRoutes,
-    // ...dashboardRoutes,
-    // ...authRoutes,
-  ];
+  return [...appRoutes];
 };
 
 // Helper function to get routes with specific metadata

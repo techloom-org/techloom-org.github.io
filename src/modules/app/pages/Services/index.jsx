@@ -1,15 +1,12 @@
 import techloomLogo from '@assets/images/logo.png';
 import { useDocumentHead } from '@modules/app/hooks/useDocumentHead';
-import { Box } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
+import { Stack } from '@mui/material';
 import { useEffect } from 'react';
 import ServicesCallToAction from './ServicesCallToAction';
 import ServicesHero from './ServicesHero';
 import ServicesList from './ServicesList';
 
 const Services = () => {
-  const theme = useTheme();
-
   useDocumentHead({
     title: 'Services - Techloom | Custom Software Development & Technology Solutions',
     description:
@@ -117,12 +114,9 @@ const Services = () => {
   }, []);
 
   return (
-    <Box
-      sx={{
-        flexGrow: 1,
-        pt: 8,
-        borderRadius: theme.palette.custom.borderRadius,
-      }}
+    <Stack
+      sx={{ flexGrow: 1, pt: 8 }}
+      spacing={{ xs: 3, md: 15 }}
       component="main"
       role="main"
       aria-label="Techloom services page content"
@@ -130,7 +124,7 @@ const Services = () => {
       <ServicesHero />
       <ServicesList />
       <ServicesCallToAction />
-    </Box>
+    </Stack>
   );
 };
 

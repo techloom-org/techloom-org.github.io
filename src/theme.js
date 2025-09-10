@@ -46,6 +46,13 @@ const getTheme = () =>
         gradientEnd: 'rgba(255, 255, 255, 0.05)',
         headerBg: 'rgba(18, 18, 18, 0.95)',
         borderRadius: 4,
+        // Aurora background configuration
+        aurora: {
+          colorStops: ['#1a1a1a', '#fecf1d', '#2a2a2a'], // Dark base, gold accent, paper
+          blend: 0.3,
+          amplitude: 0.8,
+          speed: 0.3,
+        },
       },
     },
     typography: {
@@ -170,7 +177,11 @@ const getTheme = () =>
         styleOverrides: {
           root: ({ theme }) => ({
             borderRadius: theme.shape.borderRadius,
-            border: `1px solid #2a2a2a`,
+            border: `1px solid rgba(254, 207, 29, 0.2)`,
+            background: `linear-gradient(135deg, rgba(254, 207, 29, 0.1) 0%, rgba(0, 0, 0, 0.1) 100%) !important`,
+            backdropFilter: 'blur(20px)',
+            WebkitBackdropFilter: 'blur(20px)',
+            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
           }),
         },
       },

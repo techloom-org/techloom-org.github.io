@@ -1,6 +1,8 @@
 import About from '../pages/About';
 import Contact from '../pages/Contact';
 import Home from '../pages/Home';
+import Portfolio from '../pages/portfolio';
+import PortfolioDetail from '../pages/portfolio/PortfolioDetail';
 import Services from '../pages/Services';
 
 export const appRoutes = [
@@ -27,6 +29,23 @@ export const appRoutes = [
     meta: {
       title: 'Services - Techloom',
       description: 'Discover our software development services',
+    },
+  },
+  {
+    path: '/portfolio',
+    component: Portfolio,
+    exact: true,
+    meta: {
+      title: 'Portfolio - Techloom',
+      description: 'Explore our portfolio of successful projects',
+    },
+  },
+  {
+    path: '/portfolio/:projectId',
+    component: PortfolioDetail,
+    meta: {
+      title: 'Project Details - Techloom',
+      description: 'Detailed view of our project',
     },
   },
   {

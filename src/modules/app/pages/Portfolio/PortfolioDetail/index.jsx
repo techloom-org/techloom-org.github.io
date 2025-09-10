@@ -1,17 +1,9 @@
 import { useProject, useProjectMedia } from '@/firebase/hooks/useProjects';
 import { useProjectSections } from '@/firebase/hooks/useSections';
-import Intro from '@/modules/portfolio/components/Intro';
-import Section from '@/modules/portfolio/components/Section';
-import {
-  Box,
-  Card,
-  CardMedia,
-  CircularProgress,
-  Container,
-  Grid,
-  Typography,
-} from '@mui/material';
+import { Box, Card, CardMedia, CircularProgress, Container, Grid, Typography } from '@mui/material';
 import { useParams } from 'react-router-dom';
+import Intro from '../../../components/Intro';
+import Section from '../../../components/Section';
 
 const PortfolioDetail = () => {
   const { projectId } = useParams();
@@ -67,10 +59,12 @@ const PortfolioDetail = () => {
       <Intro
         title={project.title}
         description={project.description}
-        images={project.images?.map((src, index) => ({
-          src,
-          alt: `${project.title} - Image ${index + 1}`,
-        })) || []}
+        images={
+          project.images?.map((src, index) => ({
+            src,
+            alt: `${project.title} - Image ${index + 1}`,
+          })) || []
+        }
         keyFeatures={project.features}
         techStack={project.technologies}
       />

@@ -117,14 +117,14 @@ const ContactInfo = () => {
   return (
     <Container maxWidth="lg">
       {/* Header Section */}
-      <Box sx={{ textAlign: 'center', mb: { xs: 6, sm: 8 } }}>
+      <Box sx={{ textAlign: 'center', mb: { xs: 4, sm: 5 } }}>
         <Chip
-          label="🚀 Multiple Ways to Connect"
+          label="🚀 Get in Touch"
           sx={{
-            mb: { xs: 2, sm: 3 },
-            px: 3,
-            py: 1,
-            fontSize: { xs: '0.9rem', sm: '1rem' },
+            mb: 2,
+            px: 2.5,
+            py: 0.5,
+            fontSize: '0.9rem',
             fontWeight: 600,
             bgcolor: `${theme.palette.primary.main}10`,
             color: 'primary.main',
@@ -136,10 +136,10 @@ const ContactInfo = () => {
           variant="h2"
           component="h2"
           sx={{
-            fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' },
+            fontSize: { xs: '1.8rem', sm: '2.2rem', md: '2.5rem' },
             fontWeight: 700,
             color: 'text.primary',
-            mb: 3,
+            mb: 2,
             lineHeight: 1.2,
           }}
         >
@@ -151,30 +151,29 @@ const ContactInfo = () => {
         </Typography>
 
         <Typography
-          variant="h6"
+          variant="body1"
           sx={{
             color: 'text.secondary',
-            maxWidth: '700px',
+            maxWidth: '600px',
             mx: 'auto',
-            fontSize: { xs: '1rem', sm: '1.1rem' },
-            lineHeight: 1.6,
+            fontSize: { xs: '0.95rem', sm: '1rem' },
+            lineHeight: 1.5,
           }}
         >
-          We're here to help you succeed. Connect with us through your favorite communication method
-          and get expert guidance for your technology needs.
+          Connect with us through your favorite method and get expert guidance.
         </Typography>
       </Box>
 
       {/* Contact Methods Grid */}
-      <Grid container spacing={{ xs: 4, sm: 5, md: 6 }} sx={{ mb: { xs: 8, sm: 10 } }}>
+      <Grid container spacing={{ xs: 3, sm: 4 }} sx={{ mb: { xs: 6, sm: 7 } }}>
         {contactMethods.map((method, index) => (
-          <Grid key={index} size={{ xs: 12, sm: 6 }}>
+          <Grid key={index} size={{ xs: 12, sm: 6, md: 3 }}>
             <Card
               elevation={0}
               sx={{
                 height: '100%',
-                minHeight: { xs: '320px', sm: '360px' },
-                p: { xs: 3, sm: 4 },
+                minHeight: { xs: '200px', sm: '220px' },
+                p: 2,
                 borderRadius: theme.palette.custom.borderRadius,
                 bgcolor: 'background.paper',
                 border: `1px solid ${theme.palette.divider}`,
@@ -183,8 +182,8 @@ const ContactInfo = () => {
                 position: 'relative',
                 overflow: 'hidden',
                 '&:hover': {
-                  transform: 'translateY(-8px) scale(1.02)',
-                  boxShadow: `0 20px 40px rgba(0,0,0,0.3), 0 0 20px ${method.color}20`,
+                  transform: 'translateY(-4px)',
+                  boxShadow: `0 8px 25px rgba(0,0,0,0.15), 0 0 15px ${method.color}15`,
                   border: `1px solid ${method.color}40`,
                 },
                 '&::before': {
@@ -193,106 +192,79 @@ const ContactInfo = () => {
                   top: 0,
                   left: 0,
                   right: 0,
-                  height: '4px',
-                  background: `linear-gradient(90deg, ${method.color}, ${method.color}80)`,
+                  height: '3px',
+                  background: method.color,
                 },
               }}
               onClick={method.action}
             >
               <CardContent
                 sx={{
-                  p: { xs: 4, sm: 5 },
+                  p: 2,
                   textAlign: 'center',
                   height: '100%',
                   display: 'flex',
                   flexDirection: 'column',
-                  justifyContent: 'space-between',
+                  justifyContent: 'center',
+                  alignItems: 'center',
                 }}
               >
-                <Box>
-                  {/* Badge */}
-                  <Box
-                    sx={{
-                      display: 'flex',
-                      justifyContent: 'center',
-                      mb: { xs: 3, sm: 4 },
-                    }}
-                  >
-                    <Box
-                      sx={{
-                        bgcolor: `${method.color}15`,
-                        color: method.color,
-                        px: { xs: 3, sm: 4 },
-                        py: { xs: 1, sm: 1.2 },
-                        borderRadius: '24px',
-                        fontSize: { xs: '0.8rem', sm: '0.85rem' },
-                        fontWeight: 700,
-                        textAlign: 'center',
-                        border: `2px solid ${method.color}30`,
-                      }}
-                    >
-                      {method.badge}
-                    </Box>
-                  </Box>
-
-                  {/* Icon */}
-                  <Box
-                    sx={{
-                      width: { xs: 140, sm: 160 },
-                      height: { xs: 140, sm: 160 },
-                      borderRadius: '50%',
-                      bgcolor: `${method.color}15`,
-                      color: method.color,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      mx: 'auto',
-                      mb: { xs: 4, sm: 5 },
-                      transition: 'all 0.3s ease',
-                    }}
-                  >
-                    {method.icon}
-                  </Box>
-
-                  {/* Content */}
-                  <Typography
-                    variant="h5"
-                    component="h3"
-                    sx={{
-                      fontWeight: 700,
-                      color: 'text.primary',
-                      mb: 3,
-                      fontSize: { xs: '1.3rem', sm: '1.4rem' },
-                    }}
-                  >
-                    {method.title}
-                  </Typography>
-
-                  <Typography
-                    variant="h6"
-                    sx={{
-                      color: 'text.primary',
-                      fontWeight: 600,
-                      fontSize: { xs: '1.05rem', sm: '1.1rem' },
-                      mb: 3,
-                      wordBreak: 'break-word',
-                    }}
-                  >
-                    {method.primary}
-                  </Typography>
-
-                  <Typography
-                    variant="body1"
-                    sx={{
-                      color: 'text.secondary',
-                      fontSize: { xs: '0.95rem', sm: '1rem' },
-                      lineHeight: 1.6,
-                      px: 2,
-                    }}
-                  >
-                    {method.secondary}
-                  </Typography>
+                {/* Icon */}
+                <Box
+                  sx={{
+                    width: { xs: 60, sm: 70 },
+                    height: { xs: 60, sm: 70 },
+                    borderRadius: '50%',
+                    bgcolor: `${method.color}15`,
+                    color: method.color,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    mb: 2,
+                    '& svg': { fontSize: { xs: '2rem', sm: '2.5rem' } },
+                  }}
+                >
+                  {method.icon}
                 </Box>
+
+                {/* Content */}
+                <Typography
+                  variant="h6"
+                  component="h3"
+                  sx={{
+                    fontWeight: 700,
+                    color: 'text.primary',
+                    mb: 1,
+                    fontSize: { xs: '1rem', sm: '1.1rem' },
+                  }}
+                >
+                  {method.title}
+                </Typography>
+
+                <Typography
+                  variant="body2"
+                  sx={{
+                    color: 'primary.main',
+                    fontWeight: 600,
+                    fontSize: { xs: '0.8rem', sm: '0.85rem' },
+                    mb: 1,
+                    wordBreak: 'break-word',
+                  }}
+                >
+                  {method.primary}
+                </Typography>
+
+                <Typography
+                  variant="body2"
+                  sx={{
+                    color: 'text.secondary',
+                    fontSize: { xs: '0.75rem', sm: '0.8rem' },
+                    lineHeight: 1.4,
+                    textAlign: 'center',
+                  }}
+                >
+                  {method.secondary}
+                </Typography>
               </CardContent>
             </Card>
           </Grid>
@@ -302,8 +274,8 @@ const ContactInfo = () => {
       {/* Business Information */}
       <Box
         sx={{
-          mb: { xs: 8, sm: 10 },
-          p: { xs: 4, sm: 6, md: 8 },
+          mb: { xs: 5, sm: 6 },
+          p: { xs: 3, sm: 4 },
           borderRadius: theme.palette.custom.borderRadius,
           bgcolor: `${theme.palette.primary.main}05`,
           border: `1px solid ${theme.palette.primary.main}20`,
@@ -313,102 +285,89 @@ const ContactInfo = () => {
           variant="h4"
           component="h3"
           sx={{
-            fontSize: { xs: '1.8rem', sm: '2rem', md: '2.2rem' },
+            fontSize: { xs: '1.3rem', sm: '1.5rem' },
             fontWeight: 700,
             color: 'text.primary',
-            mb: { xs: 6, sm: 8 },
+            mb: 4,
             textAlign: 'center',
           }}
         >
           Business Information
         </Typography>
 
-        <Grid container spacing={{ xs: 4, sm: 5, md: 6 }}>
+        <Grid container spacing={{ xs: 2, sm: 3 }}>
           {businessInfo.map((info, index) => (
-            <Grid key={index} size={{ xs: 12, sm: 6 }}>
+            <Grid key={index} size={{ xs: 12, sm: 3 }}>
               <Box
                 sx={{
-                  position: 'relative',
+                  height: '100%',
                   textAlign: 'center',
-                  p: { xs: 4, sm: 5, md: 6 },
-                  minHeight: { xs: '240px', sm: '260px' },
-                  borderRadius: '30px',
+                  p: { xs: 2, sm: 3 },
+                  minHeight: { xs: '140px', sm: '160px' },
+                  borderRadius: '20px',
                   background: `linear-gradient(135deg, ${theme.palette.primary.main}08, ${theme.palette.primary.main}15)`,
-                  border: `2px solid ${theme.palette.primary.main}20`,
+                  border: `1px solid ${theme.palette.primary.main}20`,
                   transition: 'all 0.3s ease',
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'center',
                   alignItems: 'center',
-                  overflow: 'hidden',
                   '&:hover': {
-                    transform: 'translateY(-8px) scale(1.02)',
+                    transform: 'translateY(-2px)',
                     background: `linear-gradient(135deg, ${theme.palette.primary.main}12, ${theme.palette.primary.main}20)`,
-                    boxShadow: `0 15px 40px rgba(0,0,0,0.3), 0 0 25px ${theme.palette.primary.main}20`,
-                    border: `2px solid ${theme.palette.primary.main}40`,
-                  },
-                  '&::before': {
-                    content: '""',
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    height: '3px',
-                    background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
-                    borderRadius: '30px 30px 0 0',
+                    boxShadow: `0 8px 20px rgba(0,0,0,0.15)`,
                   },
                 }}
               >
                 <Box
                   sx={{
-                    width: { xs: 100, sm: 120 },
-                    height: { xs: 100, sm: 120 },
+                    width: { xs: 50, sm: 60 },
+                    height: { xs: 50, sm: 60 },
                     borderRadius: '50%',
                     bgcolor: `${theme.palette.primary.main}15`,
                     color: 'primary.main',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    mx: 'auto',
-                    mb: { xs: 4, sm: 5 },
+                    mb: 2,
+                    '& svg': { fontSize: { xs: '1.5rem', sm: '2rem' } },
                   }}
                 >
                   {info.icon}
                 </Box>
 
                 <Typography
-                  variant="h5"
+                  variant="h6"
                   component="h4"
                   sx={{
                     fontWeight: 700,
                     color: 'text.primary',
-                    mb: 3,
-                    fontSize: { xs: '1.2rem', sm: '1.3rem' },
+                    mb: 1,
+                    fontSize: { xs: '0.9rem', sm: '1rem' },
                   }}
                 >
                   {info.title}
                 </Typography>
 
                 <Typography
-                  variant="h6"
+                  variant="body2"
                   sx={{
                     color: 'primary.main',
-                    fontWeight: 700,
-                    mb: 3,
-                    fontSize: { xs: '1.1rem', sm: '1.2rem' },
+                    fontWeight: 600,
+                    mb: 1,
+                    fontSize: { xs: '0.8rem', sm: '0.9rem' },
                   }}
                 >
                   {info.content}
                 </Typography>
 
                 <Typography
-                  variant="body1"
+                  variant="body2"
                   sx={{
                     color: 'text.secondary',
-                    fontSize: { xs: '0.9rem', sm: '1rem' },
-                    lineHeight: 1.6,
+                    fontSize: { xs: '0.7rem', sm: '0.8rem' },
+                    lineHeight: 1.4,
                     textAlign: 'center',
-                    px: 2,
                   }}
                 >
                   {info.description}
@@ -422,13 +381,13 @@ const ContactInfo = () => {
       {/* Quick Actions */}
       <Box sx={{ textAlign: 'center' }}>
         <Typography
-          variant="h4"
+          variant="h5"
           component="h3"
           sx={{
-            fontSize: { xs: '1.5rem', sm: '1.8rem' },
+            fontSize: { xs: '1.2rem', sm: '1.4rem' },
             fontWeight: 700,
             color: 'text.primary',
-            mb: 4,
+            mb: 3,
           }}
         >
           Ready to Get Started?
@@ -436,7 +395,7 @@ const ContactInfo = () => {
 
         <Stack
           direction={{ xs: 'column', sm: 'row' }}
-          spacing={3}
+          spacing={2}
           justifyContent="center"
           alignItems="center"
         >
@@ -449,73 +408,22 @@ const ContactInfo = () => {
               onClick={action.action}
               endIcon={<ArrowForward />}
               sx={{
-                px: 6,
-                py: 2.5,
-                fontSize: '1.1rem',
+                px: 4,
+                py: 1.5,
+                fontSize: '1rem',
                 fontWeight: 600,
                 borderRadius: theme.palette.custom.borderRadius,
-                minWidth: { xs: '100%', sm: '200px' },
-                position: 'relative',
-                overflow: 'hidden',
-                '&::before': {
-                  content: '""',
-                  position: 'absolute',
-                  top: 0,
-                  left: '-100%',
-                  width: '100%',
-                  height: '100%',
-                  background:
-                    'linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)',
-                  transition: 'left 0.5s ease',
-                  zIndex: 1,
-                },
-                '&:hover::before': {
-                  left: '100%',
+                minWidth: { xs: '100%', sm: '180px' },
+                transition: 'all 0.3s ease',
+                '&:hover': {
+                  transform: 'translateY(-2px)',
                 },
               }}
             >
-              <Box sx={{ position: 'relative', zIndex: 2 }}>
-                <Typography
-                  variant="body1"
-                  sx={{
-                    fontWeight: 600,
-                    fontSize: '1.1rem',
-                    lineHeight: 1.2,
-                  }}
-                >
-                  {action.title}
-                </Typography>
-                <Typography
-                  variant="body2"
-                  sx={{
-                    fontSize: '0.8rem',
-                    opacity: 0.9,
-                    fontWeight: 400,
-                  }}
-                >
-                  {action.description}
-                </Typography>
-              </Box>
+              {action.title}
             </Button>
           ))}
         </Stack>
-
-        {/* Additional CTA Text */}
-        <Typography
-          variant="body1"
-          sx={{
-            color: 'text.secondary',
-            mt: 4,
-            fontSize: '0.95rem',
-            maxWidth: '600px',
-            mx: 'auto',
-            lineHeight: 1.6,
-          }}
-        >
-          Have questions about our services, need a custom solution, or want to discuss your
-          project? We're here to help you every step of the way. Choose any communication method
-          above and let's start building something amazing together.
-        </Typography>
       </Box>
     </Container>
   );

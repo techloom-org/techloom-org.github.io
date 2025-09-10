@@ -113,8 +113,7 @@ const Header = () => {
         position="fixed"
         elevation={0}
         sx={{
-          bgcolor: theme.palette.custom.headerBg,
-          backdropFilter: 'blur(10px)',
+          background: 'transparent',
           minHeight: '80px',
         }}
       >

@@ -9,10 +9,7 @@ const HomeFooter = () => {
     <Box
       sx={{
         py: { xs: 6, sm: 8, md: 10, lg: 12 },
-        bgcolor: '#2a2a2a',
-        color: '#ffffff',
         px: { xs: 2, sm: 2 },
-        borderRadius: 3,
         mx: { xs: 2, sm: 2 },
         mb: { xs: 2, sm: 4 },
       }}
