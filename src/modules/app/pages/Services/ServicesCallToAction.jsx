@@ -21,9 +21,9 @@ const ServicesCallToAction = () => {
         position: 'relative',
         borderRadius: theme.palette.custom.borderRadius,
         background: `linear-gradient(135deg,
-          ${theme.palette.primary.main}${theme.palette.mode === 'dark' ? '08' : '12'} 0%,
+          ${theme.palette.primary.main}08 0%,
           ${theme.palette.background.default} 50%,
-          ${theme.palette.primary.main}${theme.palette.mode === 'dark' ? '05' : '08'} 100%)`,
+          ${theme.palette.primary.main}05 100%)`,
         overflow: 'hidden',
       }}
     >
@@ -81,9 +81,9 @@ const ServicesCallToAction = () => {
                   gap: 1,
                   px: { xs: 2, sm: 3 },
                   py: 1,
-                  bgcolor: `${theme.palette.primary.main}${theme.palette.mode === 'dark' ? '10' : '15'}`,
+                  bgcolor: `${theme.palette.primary.main}10`,
                   borderRadius: theme.palette.custom.borderRadius,
-                  border: `1px solid ${theme.palette.primary.main}${theme.palette.mode === 'dark' ? '20' : '30'}`,
+                  border: `1px solid ${theme.palette.primary.main}20`,
                 }}
               >
                 <CheckCircle
@@ -160,7 +160,7 @@ const ServicesCallToAction = () => {
           width: 300,
           height: 300,
           borderRadius: '50%',
-          background: `radial-gradient(circle, ${theme.palette.primary.main}${theme.palette.mode === 'dark' ? '08' : '12'}, transparent)`,
+          background: `radial-gradient(circle, ${theme.palette.primary.main}08, transparent)`,
           zIndex: 0,
           animation: 'float 8s ease-in-out infinite',
           '@keyframes float': {
@@ -178,7 +178,7 @@ const ServicesCallToAction = () => {
           width: 200,
           height: 200,
           borderRadius: '50%',
-          background: `radial-gradient(circle, ${theme.palette.primary.main}${theme.palette.mode === 'dark' ? '05' : '08'}, transparent)`,
+          background: `radial-gradient(circle, ${theme.palette.primary.main}05, transparent)`,
           zIndex: 0,
           animation: 'float 6s ease-in-out infinite reverse',
         }}

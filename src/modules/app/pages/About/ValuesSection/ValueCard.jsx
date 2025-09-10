@@ -23,10 +23,7 @@ const ValueCard = ({ title, description, icon, color }) => {
         willChange: 'transform',
         '&:hover': {
           transform: 'translateY(-8px)', // Reduced movement for smoother animation
-          boxShadow:
-            theme.palette.mode === 'dark'
-              ? `0 12px 25px rgba(0,0,0,0.25)`
-              : `0 12px 25px rgba(0,0,0,0.1)`,
+          boxShadow: `0 12px 25px rgba(0,0,0,0.25)`,
           borderColor: `${color}60`, // Simpler border change instead of complex shadow
           '& .icon-avatar': {
             transform: 'scale(1.1)', // Removed rotation for smoother performance

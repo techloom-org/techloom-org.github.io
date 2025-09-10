@@ -1,7 +1,4 @@
 import { getNavigationItems } from '@modules/app/config/navigation';
-import { useThemeMode } from '@modules/app/hooks/useThemeController';
-import Brightness4Icon from '@mui/icons-material/Brightness4';
-import Brightness7Icon from '@mui/icons-material/Brightness7';
 import CloseIcon from '@mui/icons-material/Close';
 import MenuIcon from '@mui/icons-material/Menu';
 import {
@@ -23,7 +20,6 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Logo from './Logo';
 
 const Header = () => {
-  const { toggleColorMode, isDark } = useThemeMode();
   const theme = useTheme();
   const navigate = useNavigate();
   const location = useLocation();
@@ -108,25 +104,6 @@ const Header = () => {
           </ListItem>
         ))}
       </List>
-
-      <Box sx={{ p: 2, borderTop: 1, borderColor: 'divider' }}>
-        <Button
-          onClick={toggleColorMode}
-          fullWidth
-          size="small"
-          startIcon={isDark ? <Brightness7Icon /> : <Brightness4Icon />}
-          sx={{
-            color: 'text.primary',
-            borderRadius: 2,
-            py: 1.5,
-            '&:hover': {
-              bgcolor: 'action.hover',
-            },
-          }}
-        >
-          {isDark ? 'Light Mode' : 'Dark Mode'}
-        </Button>
-      </Box>
     </Box>
   );
 
@@ -186,23 +163,6 @@ const Header = () => {
               </Button>
             ))}
           </Box>
-
-          {/* Desktop Theme Toggle */}
-          <IconButton
-            onClick={toggleColorMode}
-            sx={{
-              ml: 3,
-              color: 'text.primary',
-              minWidth: '48px',
-              minHeight: '48px',
-              display: { xs: 'none', md: 'flex' },
-              '&:hover': {
-                bgcolor: 'action.hover',
-              },
-            }}
-          >
-            {isDark ? <Brightness7Icon /> : <Brightness4Icon />}
-          </IconButton>
 
           {/* Mobile Menu Button */}
           <IconButton

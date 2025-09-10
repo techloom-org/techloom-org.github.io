@@ -26,7 +26,7 @@ const PortfolioHero = () => {
           right: 0,
           bottom: 0,
           background: `radial-gradient(ellipse at center,
-            ${theme.palette.primary.main}${theme.palette.mode === 'dark' ? '08' : '12'} 0%,
+            ${theme.palette.primary.main}08 0%,
             transparent 70%)`,
           zIndex: 1,
         },

@@ -17,10 +17,7 @@ const FeatureCard = ({ feature }) => {
         border: `1px solid ${theme.palette.divider}`,
         '&:hover': {
           transform: 'translateY(-8px)',
-          boxShadow:
-            theme.palette.mode === 'dark'
-              ? '0 20px 40px rgba(0,0,0,0.3)'
-              : '0 20px 40px rgba(0,0,0,0.1)',
+          boxShadow: '0 20px 40px rgba(0,0,0,0.3)',
           border: `1px solid ${feature.color}`,
         },
       }}

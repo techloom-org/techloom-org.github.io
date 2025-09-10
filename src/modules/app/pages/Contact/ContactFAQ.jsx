@@ -108,17 +108,11 @@ const ContactFAQ = () => {
                 },
                 '&.Mui-expanded': {
                   margin: '0 0 16px 0',
-                  boxShadow:
-                    theme.palette.mode === 'dark'
-                      ? '0 8px 32px rgba(255, 255, 255, 0.12)'
-                      : '0 8px 32px rgba(0, 0, 0, 0.12)',
+                  boxShadow: '0 8px 32px rgba(255, 255, 255, 0.12)',
                   borderColor: theme.palette.primary.main,
                   transform: 'translateY(-2px)',
                   '& .MuiAccordionSummary-root': {
-                    bgcolor:
-                      theme.palette.mode === 'dark'
-                        ? 'rgba(255, 255, 255, 0.03)'
-                        : 'rgba(0, 0, 0, 0.02)',
+                    bgcolor: 'rgba(255, 255, 255, 0.03)',
                   },
                 },
                 '&:hover': {
@@ -166,10 +160,7 @@ const ContactFAQ = () => {
                   px: 3,
                   pb: 3,
                   pt: 0,
-                  bgcolor:
-                    theme.palette.mode === 'dark'
-                      ? 'rgba(255, 255, 255, 0.02)'
-                      : 'rgba(0, 0, 0, 0.01)',
+                  bgcolor: 'rgba(255, 255, 255, 0.02)',
                 }}
               >
                 <Typography

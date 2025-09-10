@@ -1,24 +1,15 @@
 import { Container } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
 import Carousel from '../../components/Carousel';
 import Intro from '../../components/Intro';
 
 // Import Dawwa assets
 import mobile1 from '../../../../assets/images/portfolio/dawwa/mobile1.png';
-import mobile1Dark from '../../../../assets/images/portfolio/dawwa/mobile1_dark.png';
 import mobile2 from '../../../../assets/images/portfolio/dawwa/mobile2.png';
-import mobile2Dark from '../../../../assets/images/portfolio/dawwa/mobile2_dark.png';
 import website from '../../../../assets/images/portfolio/dawwa/website.png';
-import websiteDark from '../../../../assets/images/portfolio/dawwa/website_dark.png';
 
 export default function Dawwa() {
-  const theme = useTheme();
-  const isDark = theme.palette.mode === 'dark';
-
-  // Intro images: left, center, right layout - theme-aware
-  const introImages = [
-    { src: isDark ? websiteDark : website, alt: 'Dawwa Web Application Dashboard' },
-  ];
+  // Default to dark assets
+  const introImages = [{ src: website, alt: 'Dawwa Web Application Dashboard' }];
 
   const keyFeatures = [
     'B2B Pharmaceutical Marketplace',
@@ -45,8 +36,8 @@ export default function Dawwa() {
 
   // Mobile app images only for carousel - theme-aware
   const mobileAppImages = [
-    { src: isDark ? mobile1Dark : mobile1, alt: 'Mobile App - Pharmacy Dashboard' },
-    { src: isDark ? mobile2Dark : mobile2, alt: 'Mobile App - Product Catalog' },
+    { src: mobile1, alt: 'Mobile App - Pharmacy Dashboard' },
+    { src: mobile2, alt: 'Mobile App - Product Catalog' },
   ];
 
   return (

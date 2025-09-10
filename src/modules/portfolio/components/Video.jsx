@@ -107,10 +107,7 @@ export default function Video({ title, videoSrc, description }) {
             mx: 'auto',
             borderRadius: 4,
             overflow: 'hidden',
-            boxShadow:
-              theme.palette.mode === 'dark'
-                ? '0 8px 24px rgba(0,0,0,0.4)'
-                : '0 8px 24px rgba(0,0,0,0.12)',
+            boxShadow: '0 8px 24px rgba(0,0,0,0.4)',
             background: `linear-gradient(135deg, ${theme.palette.primary.main}08, ${theme.palette.secondary.main}05)`,
             border: `1px solid ${theme.palette.primary.main}15`,
             transition: 'transform 0.2s ease, box-shadow 0.2s ease',
@@ -118,10 +115,7 @@ export default function Video({ title, videoSrc, description }) {
             willChange: 'transform',
             '&:hover': {
               transform: 'translateY(-4px)',
-              boxShadow:
-                theme.palette.mode === 'dark'
-                  ? '0 16px 40px rgba(0,0,0,0.6)'
-                  : '0 16px 40px rgba(0,0,0,0.15)',
+              boxShadow: '0 16px 40px rgba(0,0,0,0.6)',
               '& .video-overlay': {
                 opacity: 1,
               },

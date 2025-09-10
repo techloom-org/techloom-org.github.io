@@ -1,13 +1,9 @@
 import techloomLogo from '@assets/images/logo.png';
-import techloomLogoDark from '@assets/images/logo_dark.png';
 import { Box } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
 
 const Logo = ({ height = 120, width = 'auto', sx = {} }) => {
-  const theme = useTheme();
-
-  // Use appropriate logo based on theme mode
-  const logoSrc = theme.palette.mode === 'dark' ? techloomLogoDark : techloomLogo;
+  // Default to dark logo
+  const logoSrc = techloomLogo;
 
   return (
     <Box

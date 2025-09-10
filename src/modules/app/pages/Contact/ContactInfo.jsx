@@ -126,9 +126,9 @@ const ContactInfo = () => {
             py: 1,
             fontSize: { xs: '0.9rem', sm: '1rem' },
             fontWeight: 600,
-            bgcolor: `${theme.palette.primary.main}${theme.palette.mode === 'dark' ? '10' : '15'}`,
+            bgcolor: `${theme.palette.primary.main}10`,
             color: 'primary.main',
-            border: `1px solid ${theme.palette.primary.main}${theme.palette.mode === 'dark' ? '30' : '40'}`,
+            border: `1px solid ${theme.palette.primary.main}30`,
           }}
         />
 
@@ -184,10 +184,7 @@ const ContactInfo = () => {
                 overflow: 'hidden',
                 '&:hover': {
                   transform: 'translateY(-8px) scale(1.02)',
-                  boxShadow:
-                    theme.palette.mode === 'dark'
-                      ? `0 20px 40px rgba(0,0,0,0.3), 0 0 20px ${method.color}20`
-                      : `0 20px 40px rgba(0,0,0,0.1), 0 0 20px ${method.color}20`,
+                  boxShadow: `0 20px 40px rgba(0,0,0,0.3), 0 0 20px ${method.color}20`,
                   border: `1px solid ${method.color}40`,
                 },
                 '&::before': {
@@ -336,8 +333,8 @@ const ContactInfo = () => {
                   p: { xs: 4, sm: 5, md: 6 },
                   minHeight: { xs: '240px', sm: '260px' },
                   borderRadius: '30px',
-                  background: `linear-gradient(135deg, ${theme.palette.primary.main}${theme.palette.mode === 'dark' ? '08' : '12'}, ${theme.palette.primary.main}${theme.palette.mode === 'dark' ? '15' : '20'})`,
-                  border: `2px solid ${theme.palette.primary.main}${theme.palette.mode === 'dark' ? '20' : '30'}`,
+                  background: `linear-gradient(135deg, ${theme.palette.primary.main}08, ${theme.palette.primary.main}15)`,
+                  border: `2px solid ${theme.palette.primary.main}20`,
                   transition: 'all 0.3s ease',
                   display: 'flex',
                   flexDirection: 'column',
@@ -347,10 +344,7 @@ const ContactInfo = () => {
                   '&:hover': {
                     transform: 'translateY(-8px) scale(1.02)',
                     background: `linear-gradient(135deg, ${theme.palette.primary.main}12, ${theme.palette.primary.main}20)`,
-                    boxShadow:
-                      theme.palette.mode === 'dark'
-                        ? `0 15px 40px rgba(0,0,0,0.3), 0 0 25px ${theme.palette.primary.main}20`
-                        : `0 15px 40px rgba(0,0,0,0.15), 0 0 25px ${theme.palette.primary.main}20`,
+                    boxShadow: `0 15px 40px rgba(0,0,0,0.3), 0 0 25px ${theme.palette.primary.main}20`,
                     border: `2px solid ${theme.palette.primary.main}40`,
                   },
                   '&::before': {

@@ -32,7 +32,7 @@ const PortfolioCard = ({ project }) => {
           position: 'relative',
           transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
           '&:hover': {
-            boxShadow: `0 20px 40px ${theme.palette.mode === 'dark' ? 'rgba(0,0,0,0.4)' : 'rgba(0,0,0,0.12)'}`,
+            boxShadow: `0 20px 40px rgba(0,0,0,0.4)`,
             borderColor: theme.palette.primary.main,
             '& .project-thumbnail': {
               transform: 'scale(1.05)',

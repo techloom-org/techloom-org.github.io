@@ -1,18 +1,16 @@
 import { ArrowForward } from '@mui/icons-material';
 import { Box, Button, Stack, Typography } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 
 const HomeFooter = () => {
-  const theme = useTheme();
   const navigate = useNavigate();
 
   return (
     <Box
       sx={{
         py: { xs: 6, sm: 8, md: 10, lg: 12 },
-        bgcolor: theme.palette.mode === 'dark' ? '#2a2a2a' : '#1a1a1a',
-        color: theme.palette.mode === 'dark' ? '#ffffff' : '#ffffff',
+        bgcolor: '#2a2a2a',
+        color: '#ffffff',
         px: { xs: 2, sm: 2 },
         borderRadius: 3,
         mx: { xs: 2, sm: 2 },

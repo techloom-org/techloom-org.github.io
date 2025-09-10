@@ -31,10 +31,7 @@ const ServiceCard = ({ icon, title, description, features = [] }) => {
         willChange: 'transform',
         '&:hover': {
           transform: 'translateY(-8px)',
-          boxShadow:
-            theme.palette.mode === 'dark'
-              ? `0 12px 25px rgba(0,0,0,0.25)`
-              : `0 12px 25px rgba(0,0,0,0.1)`,
+          boxShadow: `0 12px 25px rgba(0,0,0,0.25)`,
           borderColor: `${theme.palette.primary.main}60`,
           '& .service-icon': {
             transform: 'scale(1.1)',

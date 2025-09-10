@@ -163,10 +163,7 @@ const TeamSection = () => {
                   cursor: 'pointer',
                   '&:hover': {
                     transform: 'translateY(-8px) scale(1.02)',
-                    boxShadow:
-                      theme.palette.mode === 'dark'
-                        ? `0 20px 40px rgba(0,0,0,0.3), 0 0 0 1px ${highlight.color}30`
-                        : `0 20px 40px rgba(0,0,0,0.1), 0 0 0 1px ${highlight.color}30`,
+                    boxShadow: `0 20px 40px rgba(0,0,0,0.3), 0 0 0 1px ${highlight.color}30`,
                     '& .team-icon': {
                       transform: 'scale(1.1) rotate(5deg)',
                       background: `linear-gradient(135deg, ${highlight.color}, ${highlight.color}80)`,

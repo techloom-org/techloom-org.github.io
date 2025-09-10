@@ -12,9 +12,9 @@ const ContactCallToAction = () => {
         position: 'relative',
         borderRadius: theme.palette.custom.borderRadius,
         background: `linear-gradient(135deg,
-          ${theme.palette.primary.main}${theme.palette.mode === 'dark' ? '08' : '12'} 0%,
+          ${theme.palette.primary.main}08 0%,
           ${theme.palette.background.default} 50%,
-          ${theme.palette.primary.main}${theme.palette.mode === 'dark' ? '05' : '08'} 100%)`,
+          ${theme.palette.primary.main}05 100%)`,
         overflow: 'hidden',
       }}
     >
@@ -129,7 +129,7 @@ const ContactCallToAction = () => {
           width: 200,
           height: 200,
           borderRadius: '50%',
-          background: `radial-gradient(circle, ${theme.palette.primary.main}${theme.palette.mode === 'dark' ? '06' : '10'}, transparent)`,
+          background: `radial-gradient(circle, ${theme.palette.primary.main}06, transparent)`,
           zIndex: 1,
           animation: 'float 8s ease-in-out infinite',
           '@keyframes float': {

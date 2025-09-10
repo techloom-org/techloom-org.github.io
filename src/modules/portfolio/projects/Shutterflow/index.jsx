@@ -1,6 +1,6 @@
 import { Container } from '@mui/material';
-import Carousel from '../../components/Carousel';
 import Intro from '../../components/Intro';
+import Section from '../../components/Section';
 
 // Import images
 // Website images
@@ -49,6 +49,7 @@ export default function Shutterflow() {
     { src: websiteImage1, alt: 'Homepage featuring company overview and services' },
     { src: websiteImage2, alt: 'Services page showcasing rolling shutter solutions' },
     { src: websiteImage3, alt: 'Contact page with inquiry forms and company details' },
+    { src: websiteImage3, alt: 'Contact page with inquiry forms and company details' },
   ];
 
   // Admin Panel images
@@ -82,28 +83,28 @@ export default function Shutterflow() {
         techStack={techStack}
       />
 
-      {/* Marketing Website Gallery */}
-      <Carousel
+      {/* Marketing Website Section */}
+      <Section
         title="Marketing Website"
         description="A professional marketing website that serves as the digital face of the company. Features modern design, responsive layout, comprehensive service showcases, and effective lead generation tools. Built to attract potential customers and establish credibility in the rolling shutter industry."
         images={websiteImages}
-        mode="single"
+        layout="text-left-images-right"
       />
 
-      {/* Admin Panel Gallery */}
-      <Carousel
+      {/* Admin Panel Section */}
+      <Section
         title="Admin Panel - Business Management"
         description="A comprehensive CRM system designed specifically for rolling shutter businesses. This powerful admin panel centralizes all business operations including customer relationship management, quotation generation, sales target tracking, installation scheduling, inventory control, and detailed analytics reporting. Features role-based access control and real-time business insights."
         images={adminPanelImages}
-        mode="single"
+        layout="text-right-images-left"
       />
 
-      {/* Customer Panel Gallery */}
-      <Carousel
+      {/* Customer Panel Section */}
+      <Section
         title="Customer Panel - Client Portal"
         description="A dedicated client portal that enhances customer experience by providing transparency and control. Customers can track their project progress in real-time, view installation timelines, access project documents, communicate directly with the team, and receive automated status updates throughout their service journey."
         images={customerPanelImages}
-        mode="single"
+        layout="text-top-images-bottom"
       />
     </Container>
   );

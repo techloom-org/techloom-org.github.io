@@ -160,7 +160,7 @@ const ServicesList = () => {
           width: 250,
           height: 250,
           borderRadius: '50%',
-          background: `radial-gradient(circle, ${theme.palette.primary.main}${theme.palette.mode === 'dark' ? '06' : '12'}, transparent)`,
+          background: `radial-gradient(circle, ${theme.palette.primary.main}06, transparent)`,
           zIndex: 0,
           animation: 'float 10s ease-in-out infinite',
           '@keyframes float': {
@@ -178,7 +178,7 @@ const ServicesList = () => {
           width: 180,
           height: 180,
           borderRadius: '50%',
-          background: `radial-gradient(circle, ${theme.palette.primary.main}${theme.palette.mode === 'dark' ? '04' : '08'}, transparent)`,
+          background: `radial-gradient(circle, ${theme.palette.primary.main}04, transparent)`,
           zIndex: 0,
           animation: 'float 7s ease-in-out infinite reverse',
         }}

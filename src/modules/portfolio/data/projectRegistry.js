@@ -9,7 +9,6 @@ import tupperwareThumbnail from '../../../assets/images/portfolio/tupperware/her
 
 // Import Dawwa thumbnail images
 import dawwaWebsite from '../../../assets/images/portfolio/dawwa/website.png';
-import dawwaWebsiteDark from '../../../assets/images/portfolio/dawwa/website_dark.png';
 
 // Import Landing Pages thumbnail image
 import landingPagesHero from '../../../assets/images/portfolio/landing-pages/hero-section.png';
@@ -36,7 +35,6 @@ export const projectRegistry = {
       title: 'Dawwa',
       description: 'Pharmaceuticals e-commerce marketplace for pharmacies',
       thumbnail: dawwaWebsite,
-      thumbnailDark: dawwaWebsiteDark, // Add dark mode thumbnail
       technologies: ['React Native', 'React.js', 'Firebase', 'Material-UI', 'Algolia'],
       featured: true,
       date: '2023-11-15',

@@ -33,8 +33,7 @@ const ContactStats = () => {
         py: { xs: 6, sm: 8, md: 10 },
         position: 'relative',
         borderRadius: theme.palette.custom.borderRadius,
-        background:
-          theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.02)' : 'rgba(0, 0, 0, 0.02)',
+        background: 'rgba(255, 255, 255, 0.02)',
       }}
     >
       <Container maxWidth="lg">
@@ -81,10 +80,7 @@ const ContactStats = () => {
                   transition: 'all 0.3s ease',
                   '&:hover': {
                     transform: 'translateY(-5px)',
-                    boxShadow:
-                      theme.palette.mode === 'dark'
-                        ? '0 8px 25px rgba(255,255,255,0.1)'
-                        : '0 8px 25px rgba(0,0,0,0.1)',
+                    boxShadow: '0 8px 25px rgba(255,255,255,0.1)',
                   },
                 }}
               >

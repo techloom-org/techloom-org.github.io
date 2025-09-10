@@ -77,10 +77,7 @@ const MissionVision = () => {
                   willChange: 'transform',
                   '&:hover': {
                     transform: 'translateY(-6px)', // Reduced movement for smoother animation
-                    boxShadow:
-                      theme.palette.mode === 'dark'
-                        ? `0 15px 30px rgba(0,0,0,0.3)`
-                        : `0 15px 30px rgba(0,0,0,0.12)`,
+                    boxShadow: `0 15px 30px rgba(0,0,0,0.3)`,
                     borderColor: `${item.color}50`, // Simpler border change
                     '& .icon-avatar': {
                       transform: 'scale(1.05)', // Reduced scale, removed rotation
