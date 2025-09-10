@@ -76,7 +76,6 @@ export default [
       'react-hooks/exhaustive-deps': 'warn',
 
       // General code quality
-      'no-console': 'warn',
       'no-debugger': 'warn',
       'no-alert': 'warn',
       'prefer-const': 'warn',

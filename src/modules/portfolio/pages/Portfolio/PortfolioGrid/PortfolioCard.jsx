@@ -11,7 +11,6 @@ const PortfolioCard = ({ project }) => {
   const handleClick = () => {
     navigate(`/portfolio/${project.id}`);
   };
-
   return (
     <motion.div
       whileHover={{
@@ -58,7 +57,7 @@ const PortfolioCard = ({ project }) => {
             sx={{
               width: '100%',
               height: '100%',
-              backgroundImage: `url(${project.thumbnail})`,
+              backgroundImage: `url(${project.images?.[0]})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               transition: 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)',

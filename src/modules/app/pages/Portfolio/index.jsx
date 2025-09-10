@@ -1,7 +1,8 @@
-import { getAllProjects } from '@/modules/app/data/projectRegistry';
+import { useProjects } from '@/firebase/hooks/useProjects';
 import techloomLogo from '@assets/images/logo.png';
 import { useDocumentHead } from '@modules/app/hooks/useDocumentHead';
 import {
+  Alert,
   Box,
   Button,
   Card,
@@ -9,6 +10,7 @@ import {
   CardContent,
   CardMedia,
   Chip,
+  CircularProgress,
   Container,
   Grid,
   Typography,
@@ -19,7 +21,7 @@ import { useNavigate } from 'react-router-dom';
 const Portfolio = () => {
   const theme = useTheme();
   const navigate = useNavigate();
-  const projects = getAllProjects();
+  const { projects, loading, error } = useProjects();
 
   useDocumentHead({
     title: 'Portfolio - Techloom',
@@ -31,6 +33,29 @@ const Portfolio = () => {
   const handleProjectClick = (projectId) => {
     navigate(`/portfolio/${projectId}`);
   };
+
+  if (loading) {
+    return (
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          minHeight: '50vh',
+        }}
+      >
+        <CircularProgress />
+      </Box>
+    );
+  }
+
+  if (error) {
+    return (
+      <Container maxWidth="lg" sx={{ py: 4 }}>
+        <Alert severity="error">Error loading projects: {error}</Alert>
+      </Container>
+    );
+  }
 
   return (
     <Box sx={{ py: { xs: 4, md: 6 } }}>
@@ -85,7 +110,7 @@ const Portfolio = () => {
                 <CardMedia
                   component="img"
                   height="240"
-                  image={project.thumbnail}
+                  image={project.images?.[0]}
                   alt={project.title}
                   sx={{
                     objectFit: 'cover',
@@ -120,16 +145,19 @@ const Portfolio = () => {
                   </Typography>
 
                   <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mb: 2 }}>
-                    {project.technologies.slice(0, 3).map((tech) => (
-                      <Chip
-                        key={tech}
-                        label={tech}
-                        size="small"
-                        variant="outlined"
-                        sx={{ fontSize: '0.75rem' }}
-                      />
-                    ))}
-                    {project.technologies.length > 3 && (
+                    {project.technologies &&
+                      project.technologies
+                        .slice(0, 3)
+                        .map((tech) => (
+                          <Chip
+                            key={tech}
+                            label={tech}
+                            size="small"
+                            variant="outlined"
+                            sx={{ fontSize: '0.75rem' }}
+                          />
+                        ))}
+                    {project.technologies && project.technologies.length > 3 && (
                       <Chip
                         label={`+${project.technologies.length - 3} more`}
                         size="small"

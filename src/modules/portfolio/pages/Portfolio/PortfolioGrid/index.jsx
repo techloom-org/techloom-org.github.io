@@ -1,12 +1,12 @@
-import { getAllProjects } from '@/modules/portfolio/data/projectRegistry';
-import { Box, Grid, Typography } from '@mui/material';
+import { useProjects } from '@/firebase';
+import { Box, CircularProgress, Grid, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { motion } from 'framer-motion';
 import PortfolioCard from './PortfolioCard';
 
 const PortfolioGrid = () => {
   const theme = useTheme();
-  const projects = getAllProjects();
+  const { projects, loading, error } = useProjects();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -30,6 +30,54 @@ const PortfolioGrid = () => {
       },
     },
   };
+
+  // Show loading state
+  if (loading) {
+    return (
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          py: 8,
+        }}
+      >
+        <CircularProgress color="primary" />
+      </Box>
+    );
+  }
+
+  // Show error state
+  if (error) {
+    return (
+      <Box
+        sx={{
+          textAlign: 'center',
+          py: 8,
+        }}
+      >
+        <Typography color="error" variant="h6">
+          Error loading projects: {error}
+        </Typography>
+      </Box>
+    );
+  }
+
+  // Show empty state
+  if (!projects || projects.length === 0) {
+    return (
+      <Box
+        sx={{
+          textAlign: 'center',
+          py: 8,
+        }}
+      >
+        <Typography variant="h6" color="text.secondary">
+          No projects found.
+        </Typography>
+      </Box>
+    );
+  }
 
   return (
     <Box
