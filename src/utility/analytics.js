@@ -7,7 +7,7 @@ export const GTM_CONTAINER_ID = process.env.REACT_APP_GTM_CONTAINER_ID || 'GTM-K
 export const ga4Config = {
   custom_map: {
     custom_parameter_1: 'service_type',
-    custom_parameter_2: 'project_category', 
+    custom_parameter_2: 'project_category',
     custom_parameter_3: 'customer_segment',
     custom_parameter_4: 'technology_stack',
     custom_parameter_5: 'project_size',
@@ -24,7 +24,11 @@ export const ga4Config = {
 
 // Initialize Google Analytics 4
 export const initializeGA4 = () => {
-  if (typeof window === 'undefined' || !GA4_MEASUREMENT_ID || GA4_MEASUREMENT_ID === 'G-XXXXXXXXXX') {
+  if (
+    typeof window === 'undefined' ||
+    !GA4_MEASUREMENT_ID ||
+    GA4_MEASUREMENT_ID === 'G-XXXXXXXXXX'
+  ) {
     console.warn('GA4 Measurement ID not configured');
     return;
   }
@@ -47,8 +51,6 @@ export const initializeGA4 = () => {
     ...ga4Config,
     send_page_view: false, // We'll send custom page views
   });
-
-  console.log('GA4 initialized for Techloom');
 };
 
 // Initialize Google Tag Manager
@@ -57,8 +59,6 @@ export const initializeGTM = () => {
     console.warn('GTM Container ID not configured');
     return;
   }
-
-  console.log('Initializing GTM with container:', GTM_CONTAINER_ID);
 
   // GTM script
   const gtmScript = document.createElement('script');
@@ -78,13 +78,13 @@ export const initializeGTM = () => {
     height="0" width="0" style="display:none;visibility:hidden"></iframe>
   `;
   document.body.appendChild(gtmNoScript);
-
-  console.log('GTM initialized for Techloom');
 };
 
 // Enhanced page view tracking with software company context
 export const trackPageView = (page_title, page_location, page_path) => {
-  if (typeof window === 'undefined' || typeof window.gtag !== 'function') {return;}
+  if (typeof window === 'undefined' || typeof window.gtag !== 'function') {
+    return;
+  }
 
   // Determine page category and service type
   const pageCategory = getPageCategory(page_path);
@@ -117,7 +117,9 @@ export const trackPageView = (page_title, page_location, page_path) => {
 
 // Track service inquiries and contact form submissions
 export const trackServiceInquiry = (serviceType, contactMethod = 'form') => {
-  if (typeof window === 'undefined' || typeof window.gtag !== 'function') {return;}
+  if (typeof window === 'undefined' || typeof window.gtag !== 'function') {
+    return;
+  }
 
   window.gtag('event', 'generate_lead', {
     event_category: 'engagement',
@@ -140,7 +142,9 @@ export const trackServiceInquiry = (serviceType, contactMethod = 'form') => {
 
 // Track project portfolio views
 export const trackPortfolioView = (projectName, projectCategory, technologies) => {
-  if (typeof window === 'undefined' || typeof window.gtag !== 'function') {return;}
+  if (typeof window === 'undefined' || typeof window.gtag !== 'function') {
+    return;
+  }
 
   window.gtag('event', 'view_item', {
     event_category: 'portfolio',
@@ -164,7 +168,9 @@ export const trackPortfolioView = (projectName, projectCategory, technologies) =
 
 // Track WhatsApp clicks (important for Egyptian market)
 export const trackWhatsAppClick = (source = 'header') => {
-  if (typeof window === 'undefined' || typeof window.gtag !== 'function') {return;}
+  if (typeof window === 'undefined' || typeof window.gtag !== 'function') {
+    return;
+  }
 
   window.gtag('event', 'click', {
     event_category: 'contact',
@@ -184,7 +190,9 @@ export const trackWhatsAppClick = (source = 'header') => {
 
 // Track phone calls
 export const trackPhoneClick = (source = 'header') => {
-  if (typeof window === 'undefined' || typeof window.gtag !== 'function') {return;}
+  if (typeof window === 'undefined' || typeof window.gtag !== 'function') {
+    return;
+  }
 
   window.gtag('event', 'click', {
     event_category: 'contact',
@@ -204,11 +212,13 @@ export const trackPhoneClick = (source = 'header') => {
 
 // Track email clicks
 export const trackEmailClick = (source = 'contact_page') => {
-  if (typeof window === 'undefined' || typeof window.gtag !== 'function') {return;}
+  if (typeof window === 'undefined' || typeof window.gtag !== 'function') {
+    return;
+  }
 
   window.gtag('event', 'click', {
     event_category: 'contact',
-    event_label: 'email', 
+    event_label: 'email',
     contact_method: 'email',
     click_source: source,
     customer_intent: 'medium',
@@ -217,7 +227,9 @@ export const trackEmailClick = (source = 'contact_page') => {
 
 // Track service page engagement
 export const trackServiceEngagement = (serviceName, actionType = 'view') => {
-  if (typeof window === 'undefined' || typeof window.gtag !== 'function') {return;}
+  if (typeof window === 'undefined' || typeof window.gtag !== 'function') {
+    return;
+  }
 
   window.gtag('event', actionType, {
     event_category: 'service_engagement',
@@ -230,7 +242,9 @@ export const trackServiceEngagement = (serviceName, actionType = 'view') => {
 
 // Track technology interest (for portfolio filtering)
 export const trackTechnologyInterest = (technology, context = 'portfolio_filter') => {
-  if (typeof window === 'undefined' || typeof window.gtag !== 'function') {return;}
+  if (typeof window === 'undefined' || typeof window.gtag !== 'function') {
+    return;
+  }
 
   window.gtag('event', 'select_content', {
     event_category: 'technology_interest',
@@ -243,20 +257,38 @@ export const trackTechnologyInterest = (technology, context = 'portfolio_filter'
 
 // Helper functions
 const getPageCategory = (path) => {
-  if (path === '/' || path === '') {return 'home';}
-  if (path.includes('/about')) {return 'about';}
-  if (path.includes('/services')) {return 'services';}
-  if (path.includes('/portfolio')) {return 'portfolio';}
-  if (path.includes('/contact')) {return 'contact';}
+  if (path === '/' || path === '') {
+    return 'home';
+  }
+  if (path.includes('/about')) {
+    return 'about';
+  }
+  if (path.includes('/services')) {
+    return 'services';
+  }
+  if (path.includes('/portfolio')) {
+    return 'portfolio';
+  }
+  if (path.includes('/contact')) {
+    return 'contact';
+  }
   return 'other';
 };
 
 const getServiceType = (path) => {
   if (path.includes('/services')) {
-    if (path.includes('web')) {return 'web_development';}
-    if (path.includes('mobile')) {return 'mobile_development';}
-    if (path.includes('enterprise')) {return 'enterprise_solutions';}
-    if (path.includes('qa') || path.includes('testing')) {return 'quality_assurance';}
+    if (path.includes('web')) {
+      return 'web_development';
+    }
+    if (path.includes('mobile')) {
+      return 'mobile_development';
+    }
+    if (path.includes('enterprise')) {
+      return 'enterprise_solutions';
+    }
+    if (path.includes('qa') || path.includes('testing')) {
+      return 'quality_assurance';
+    }
     return 'general_services';
   }
   return 'none';
@@ -264,10 +296,18 @@ const getServiceType = (path) => {
 
 const getCustomerSegment = (path) => {
   // Infer customer segment based on page content
-  if (path.includes('/enterprise')) {return 'enterprise';}
-  if (path.includes('/startup')) {return 'startup';}
-  if (path.includes('/small-business')) {return 'small_business';}
-  if (path === '/' || path === '') {return 'mixed';}
+  if (path.includes('/enterprise')) {
+    return 'enterprise';
+  }
+  if (path.includes('/startup')) {
+    return 'startup';
+  }
+  if (path.includes('/small-business')) {
+    return 'small_business';
+  }
+  if (path === '/' || path === '') {
+    return 'mixed';
+  }
   return 'general';
 };
 

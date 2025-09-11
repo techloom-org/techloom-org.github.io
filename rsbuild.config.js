@@ -35,6 +35,7 @@ export default defineConfig({
   source: {
     define: {
       'process.env': JSON.stringify({
+        NODE_ENV: process.env.NODE_ENV,
         REACT_APP_FIREBASE_API_KEY: process.env.REACT_APP_FIREBASE_API_KEY,
         REACT_APP_FIREBASE_AUTH_DOMAIN: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
         REACT_APP_FIREBASE_PROJECT_ID: process.env.REACT_APP_FIREBASE_PROJECT_ID,
@@ -42,6 +43,8 @@ export default defineConfig({
         REACT_APP_FIREBASE_MESSAGING_SENDER_ID: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
         REACT_APP_FIREBASE_APP_ID: process.env.REACT_APP_FIREBASE_APP_ID,
         REACT_APP_FIREBASE_MEASUREMENT_ID: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
+        REACT_APP_GA4_MEASUREMENT_ID: process.env.REACT_APP_GA4_MEASUREMENT_ID,
+        REACT_APP_GTM_CONTAINER_ID: process.env.REACT_APP_GTM_CONTAINER_ID,
       }),
     },
   },

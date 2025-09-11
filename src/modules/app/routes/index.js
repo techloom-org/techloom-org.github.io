@@ -1,8 +1,9 @@
+import ProjectRedirect from '../components/ProjectRedirect';
 import About from '../pages/About';
 import Contact from '../pages/Contact';
 import Home from '../pages/Home';
-import Portfolio from '../pages/portfolio';
-import PortfolioDetail from '../pages/portfolio/PortfolioDetail';
+import Portfolio from '../pages/Portfolio';
+import PortfolioDetail from '../pages/Portfolio/PortfolioDetail';
 import Services from '../pages/Services';
 
 export const appRoutes = [
@@ -38,6 +39,16 @@ export const appRoutes = [
     meta: {
       title: 'Portfolio - Techloom',
       description: 'Explore our portfolio of successful projects',
+    },
+  },
+  {
+    path: '/portfolio/shutterflow',
+    component: () => (
+      <ProjectRedirect from="/portfolio/shutterflow" to="/portfolio/qVVTrcgS6yYJI1wJSo7X" />
+    ),
+    meta: {
+      title: 'Shutterflow - Techloom Portfolio',
+      description: 'Shutterflow project details - Custom software development by Techloom',
     },
   },
   {
