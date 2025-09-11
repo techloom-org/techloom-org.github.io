@@ -1,5 +1,7 @@
 import { useProject, useProjectMedia } from '@/firebase/hooks/useProjects';
 import { useProjectSections } from '@/firebase/hooks/useSections';
+import { useSEO } from '@/modules/app/hooks/useSEO';
+import { generateProductSchema } from '@/utility/seo';
 import { Box, Card, CardMedia, CircularProgress, Container, Grid, Typography } from '@mui/material';
 import { useParams } from 'react-router-dom';
 import Intro from '../../../components/Intro';
@@ -14,6 +16,37 @@ const PortfolioDetail = () => {
     loading: sectionsLoading,
     error: sectionsError,
   } = useProjectSections(projectId);
+
+  // Set dynamic SEO based on project data
+  useSEO({
+    title: project ? `${project.title} - Portfolio | Techloom` : 'Portfolio Detail - Techloom',
+    description: project 
+      ? `${project.description} - Custom software development project by Techloom. Built with ${project.technologies?.join(', ') || 'modern technologies'} for clients in Egypt.`
+      : 'Detailed view of our software development project - Techloom Portfolio',
+    keywords: project ? [
+      project.title,
+      ...(project.technologies || []),
+      'custom software project Egypt',
+      'software development portfolio',
+      'web application Egypt',
+      'mobile app development',
+      'مشروع برمجي مخصص',
+      'تطوير تطبيقات',
+    ] : [
+      'software development project',
+      'portfolio detail',
+      'custom software Egypt',
+    ],
+    image: project?.images?.[0] || null,
+    structuredData: project ? generateProductSchema(project) : null,
+    location: 'Egypt',
+    service: 'Custom Software Development',
+    breadcrumbs: [
+      { name: 'Home', url: '/' },
+      { name: 'Portfolio', url: '/portfolio' },
+      { name: project?.title || 'Project Details', url: `/portfolio/${projectId}` },
+    ],
+  });
 
   if (projectLoading) {
     return (

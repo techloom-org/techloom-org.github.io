@@ -1,5 +1,4 @@
-import techloomLogo from '@assets/images/logo.png';
-import { useDocumentHead } from '@modules/app/hooks/useDocumentHead';
+import { useSEO } from '@modules/app/hooks/useSEO';
 import { Box, Container } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { useEffect } from 'react';
@@ -11,23 +10,27 @@ import ContactInfo from './ContactInfo';
 const Contact = () => {
   const theme = useTheme();
 
-  useDocumentHead({
+  useSEO({
     title: 'Contact Us - Techloom | Get Expert Technology Consultation',
-    description:
-      "Connect with Techloom's expert team through WhatsApp, phone, email, or social media. Get instant responses and personalized technology solutions for your business needs.",
-    icon: techloomLogo,
+    description: "Connect with Techloom's expert team through WhatsApp, phone, email, or social media. Get instant responses and personalized technology solutions for your business needs in Egypt.",
     keywords: [
       'contact techloom',
-      'get in touch',
-      'technology consultation',
-      'project inquiry',
-      'whatsapp support',
-      'expert consultation',
+      'get in touch Egypt',
+      'technology consultation Egypt',
+      'project inquiry Cairo',
+      'whatsapp support Egypt',
+      'expert consultation Cairo',
       'custom software development contact',
-      'tech support',
-      'business solutions',
-      'instant communication',
+      'tech support Egypt',
+      'business solutions Cairo',
+      'instant communication Egypt',
+      'اتصل بنا',
+      'استشارة تقنية',
+      'دعم واتساب',
+      'حلول الأعمال',
     ],
+    location: 'Egypt',
+    service: 'Technology Consultation',
   });
 
   // Add structured data for SEO

@@ -1,5 +1,4 @@
-import techloomLogo from '@assets/images/logo.png';
-import { useDocumentHead } from '@modules/app/hooks/useDocumentHead';
+import { useSEO } from '@modules/app/hooks/useSEO';
 import { Stack } from '@mui/material';
 import { useEffect } from 'react';
 import ServicesCallToAction from './ServicesCallToAction';
@@ -7,27 +6,27 @@ import ServicesHero from './ServicesHero';
 import ServicesList from './ServicesList';
 
 const Services = () => {
-  useDocumentHead({
+  useSEO({
     title: 'Services - Techloom | Custom Software Development & Technology Solutions',
-    description:
-      'Comprehensive software development services including custom applications, multi-platform solutions, hardware-based software, quality assurance, and technology consulting.',
-    icon: techloomLogo,
+    description: 'Comprehensive software development services in Egypt including custom applications, multi-platform solutions, hardware-based software, quality assurance, and technology consulting.',
     keywords: [
-      'custom software development',
-      'multi-platform solutions',
-      'hardware-based software',
-      'embedded systems',
-      'quality assurance',
-      'technology consulting',
-      'mobile app development',
-      'web development',
-      'desktop applications',
-      'IoT solutions',
-      'software testing',
-      'code review',
-      'system assessment',
-      'performance optimization',
+      'custom software development Egypt',
+      'multi-platform solutions Cairo',
+      'hardware-based software Egypt',
+      'embedded systems Egypt',
+      'quality assurance testing Egypt',
+      'technology consulting Cairo',
+      'mobile app development Egypt',
+      'web development Cairo',
+      'desktop applications Egypt',
+      'IoT solutions Egypt',
+      'software testing Cairo',
+      'تطوير البرمجيات المخصصة',
+      'ضمان الجودة والاختبار',
+      'استشارات تقنية',
     ],
+    location: 'Egypt',
+    service: 'Software Development Services',
   });
 
   // Add structured data for SEO

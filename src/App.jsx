@@ -1,5 +1,7 @@
 import { getAllRoutes } from '@/routes';
 import Header from '@modules/app/components/Header';
+import GoogleTagManager from '@modules/app/components/GoogleTagManager';
+import SEOMonitor from '@modules/app/components/SEO/SEOMonitor';
 import { Box, Container } from '@mui/material';
 import { useEffect } from 'react';
 import { Route, BrowserRouter as Router, Routes, useNavigate } from 'react-router-dom';
@@ -31,6 +33,8 @@ function AppContent() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
+      <GoogleTagManager />
+      <SEOMonitor />
       <Header />
       <Container maxWidth="lg" sx={{ px: { xs: 4, sm: 3, md: 4 }, my: '100px' }}>
         <Routes>

@@ -1,5 +1,4 @@
-import techloomLogo from '@assets/images/logo.png';
-import { useDocumentHead } from '@modules/app/hooks/useDocumentHead';
+import { useSEO } from '@modules/app/hooks/useSEO';
 import { Box } from '@mui/material';
 import { useEffect } from 'react';
 import AboutCallToAction from './AboutCallToAction';
@@ -9,25 +8,27 @@ import TeamSection from './TeamSection';
 import ValuesSection from './ValuesSection';
 
 const About = () => {
-  useDocumentHead({
+  useSEO({
     title: 'About Us - Techloom | World-Class Technology Solutions',
-    description:
-      "Learn about Techloom's mission, vision, and world-class team. We deliver exceptional software engineering solutions with decades of global experience from Fortune 500 companies.",
-    icon: techloomLogo,
+    description: "Learn about Techloom's mission, vision, and world-class team. We deliver exceptional software engineering solutions with decades of global experience from Fortune 500 companies in Egypt.",
     keywords: [
       'about techloom',
-      'technology startup',
-      'software engineering',
-      'world-class developers',
+      'technology startup Egypt',
+      'software engineering company Egypt',
+      'world-class developers Cairo',
       'Fortune 500 experience',
-      'innovation',
-      'excellence',
-      'team',
-      'mission',
-      'vision',
-      'technology consulting',
-      'custom software development',
+      'innovation Egypt',
+      'excellence software development',
+      'team techloom',
+      'mission vision techloom',
+      'technology consulting Egypt',
+      'custom software development Egypt',
+      'شركة تكنولوجيا متقدمة',
+      'فريق تطوير محترف',
+      'رؤية ومهمة الشركة',
     ],
+    location: 'Egypt',
+    service: 'Technology Solutions',
   });
 
   // Add structured data for SEO

@@ -21,6 +21,7 @@ import {
   Typography,
 } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
+import { trackWhatsAppClick, trackPhoneClick, trackEmailClick } from '@/utility/analytics';
 
 const ContactInfo = () => {
   const theme = useTheme();
@@ -32,7 +33,10 @@ const ContactInfo = () => {
       primary: '+20 111 518 4659',
       secondary: 'Instant messaging & voice calls',
       color: '#25D366',
-      action: () => window.open('https://wa.me/201115184659', '_blank'),
+      action: () => {
+        trackWhatsAppClick('contact_page');
+        window.open('https://wa.me/201115184659', '_blank');
+      },
       badge: 'Fastest Response',
     },
     {
@@ -41,7 +45,10 @@ const ContactInfo = () => {
       primary: '+20 111 518 4659',
       secondary: 'Direct voice communication',
       color: theme.palette.primary.main,
-      action: () => window.open('tel:+201115184659', '_blank'),
+      action: () => {
+        trackPhoneClick('contact_page');
+        window.open('tel:+201115184659', '_blank');
+      },
       badge: 'Personal Touch',
     },
     {
@@ -50,7 +57,10 @@ const ContactInfo = () => {
       primary: 'techloom.apps@gmail.com',
       secondary: 'Detailed project discussions',
       color: '#EA4335',
-      action: () => window.open('mailto:techloom.apps@gmail.com', '_blank'),
+      action: () => {
+        trackEmailClick('contact_page');
+        window.open('mailto:techloom.apps@gmail.com', '_blank');
+      },
       badge: 'Professional',
     },
     {
@@ -95,21 +105,25 @@ const ContactInfo = () => {
     {
       title: 'Start a Project',
       description: "Ready to begin? Let's discuss your ideas",
-      action: () =>
+      action: () => {
+        trackWhatsAppClick('contact_cta_start_project');
         window.open(
           "https://wa.me/201115184659?text=Hi! I'd like to start a new project.",
           '_blank'
-        ),
+        );
+      },
       color: 'primary',
     },
     {
       title: 'Get a Quote',
       description: "Need pricing? We'll provide a detailed estimate",
-      action: () =>
+      action: () => {
+        trackWhatsAppClick('contact_cta_get_quote');
         window.open(
           "https://wa.me/201115184659?text=Hi! I'd like to get a quote for my project.",
           '_blank'
-        ),
+        );
+      },
       color: 'secondary',
     },
   ];

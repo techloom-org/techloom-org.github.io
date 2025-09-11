@@ -1,16 +1,28 @@
-import { useDocumentHead } from '@/modules/app/hooks/useDocumentHead';
-import techloomLogo from '@assets/images/logo.png';
+import { useSEO } from '@modules/app/hooks/useSEO';
 import { Box, Container } from '@mui/material';
 import PortfolioGrid from './PortfolioGrid';
 import PortfolioHero from './PortfolioHero';
 
 const Portfolio = () => {
-  useDocumentHead({
-    title: 'Portfolio - Techloom',
-    description:
-      'Explore our portfolio of successful projects across web development, e-commerce, IoT, and more.',
-    icon: techloomLogo,
-    keywords: ['portfolio', 'projects', 'web development', 'e-commerce', 'IoT', 'techloom'],
+  useSEO({
+    title: 'Portfolio - Techloom | Our Successful Projects',
+    description: 'Explore our portfolio of successful software development projects across web development, e-commerce, IoT, and mobile applications. See our work for clients in Egypt and worldwide.',
+    keywords: [
+      'portfolio techloom',
+      'software projects Egypt',
+      'web development projects Cairo',
+      'e-commerce projects Egypt',
+      'IoT projects Cairo',
+      'mobile app projects Egypt',
+      'custom software portfolio',
+      'successful projects Egypt',
+      'معرض أعمالنا',
+      'مشاريع ناجحة',
+      'تطبيقات ويب',
+      'تطبيقات موبايل',
+    ],
+    location: 'Egypt',
+    service: 'Software Projects',
   });
 
   return (

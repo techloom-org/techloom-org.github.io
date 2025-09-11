@@ -1,25 +1,27 @@
 import Hero from '@/modules/app/pages/Home/Hero';
 import HomeFooter from '@/modules/app/pages/Home/HomeFooter';
 import WhyChooseTechloom from '@/modules/app/pages/Home/WhyChooseTechloom';
-import techloomLogo from '@assets/images/logo.png';
-import { useDocumentHead } from '@modules/app/hooks/useDocumentHead';
+import { useSEO } from '@modules/app/hooks/useSEO';
 import { Box } from '@mui/material';
 
 const Home = () => {
-  // Automatically manage document head
-  useDocumentHead({
-    title: 'Techloom - Engineering Quality Beyond Expectations',
-    description:
-      'Techloom delivers engineering quality beyond expectations. Your trusted technology partner for innovative solutions.',
-    icon: techloomLogo,
+  useSEO({
+    title: 'Techloom | شركة تطوير البرمجيات في مصر | Software Development Company Egypt',
+    description: 'Leading software development company in Egypt. Custom web & mobile apps, enterprise solutions, quality assurance. Serving Cairo, Alexandria & all Egypt. شركة تطوير برمجيات متقدمة في مصر.',
     keywords: [
-      'techloom',
-      'engineering',
-      'technology',
-      'quality',
-      'software development',
-      'startup',
+      'software development Egypt',
+      'شركة تطوير البرمجيات مصر',
+      'web development Cairo',
+      'mobile app development Egypt',
+      'custom software Cairo',
+      'enterprise solutions Egypt',
+      'تطوير تطبيقات الويب',
+      'تطوير تطبيقات الموبايل',
+      'برمجة مواقع مصر',
+      'شركة برمجة القاهرة',
     ],
+    location: 'Egypt',
+    service: 'Software Development',
   });
 
   return (
